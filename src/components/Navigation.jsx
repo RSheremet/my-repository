@@ -8,16 +8,19 @@ const Navigation = () => {
     return (
     <nav className={classes.nav}>
         <div className={menu}>
-            <a>Profile</a>
+            <a href="/profile">Profile</a>
         </div>
         <div className={menu}>
-            <a>Messages</a>
+            <a href="/correspondense">Messages</a>
         </div>
         <div className={menu}>
-            <a>News</a>
+            <a href="/news">News</a>
         </div>
         <div className={menu}>
-            <a>Music</a>
+            <a href="/music">Music</a>
+        </div>
+        <div className={menu}>
+            <a href="/settings">Settings</a>
         </div>
     </nav>
     )
