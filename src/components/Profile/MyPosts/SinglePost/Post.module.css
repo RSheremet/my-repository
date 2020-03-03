@@ -1,0 +1,19 @@
+.content {
+    grid-area: c;
+    background-color: blue;
+    height: 100%;
+    color: #fff;
+}
+
+.singlePost img {
+    width: 80px;
+    border-radius: 50px;
+}
+
+.post {
+
+}
+
+.likes {
+
+}
