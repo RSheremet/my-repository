@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1271d330-46e6-440b-a225-93f53b5897e7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/my-repository/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/my-repository/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Correspondense/Correspondense.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Correspondense/Correspondense.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +24,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/my-repository" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YGvHb0XactmqdyOKYoJGCBMiL2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,6 +44,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -66,6 +73,7 @@
       <workItem from="1583076851758" duration="10898000" />
       <workItem from="1583169252286" duration="628000" />
       <workItem from="1583270837728" duration="608000" />
+      <workItem from="1583273389357" duration="1541000" />
     </task>
     <servers />
   </component>
@@ -77,10 +85,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="782" y="257" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1583083863382" />
+    <state x="614" y="165" key="#Notifications" timestamp="1583273829917">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="165" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1583273829917" />
     <state x="666" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582755787507">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582755787507" />
+    <state x="764" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583273931092">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="764" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583273931092" />
     <state x="920" y="346" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583088254657">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -89,5 +105,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1264" y="333" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583170085053" />
+    <state x="523" y="139" key="SettingsEditor" timestamp="1583273822742">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="523" y="139" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583273822742" />
   </component>
 </project>

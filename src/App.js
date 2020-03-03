@@ -4,6 +4,7 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation";
 import Profile from "./components/Profile";
+import Correspondense from "./components/Correspondense/Correspondense";
 
 
 
@@ -12,7 +13,10 @@ const App = () => {
     <div className='app-wrapper'>
         <Header />
         <Navigation />
-        <Profile />
+        {/*<Profile />*/}
+        <div className="app-wrapper-content">
+            <Correspondense/>
+        </div>
     </div>
   );
 }
