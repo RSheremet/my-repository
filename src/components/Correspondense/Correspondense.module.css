@@ -1,0 +1,30 @@
+.correspondense {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.wrapper {
+    padding: 10px;
+}
+
+.active {
+    text-decoration: underline;
+    color: gold;
+}
+
+.item {
+
+}
+
+.messages {
+    padding: 10px;
+}
+
+.message {
+
+}
+
+a {
+    text-align: none;
+    color: black;
+}

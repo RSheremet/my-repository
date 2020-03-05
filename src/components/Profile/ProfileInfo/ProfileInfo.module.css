@@ -1,0 +1,12 @@
+.content {
+    grid-area: c;
+    background-color: blue;
+    height: 100%;
+    color: #fff;
+}
+
+.nav {
+    grid-area: n;
+    background-color: yellow;
+    height: 100%;
+}
