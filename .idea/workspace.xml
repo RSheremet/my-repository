@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1271d330-46e6-440b-a225-93f53b5897e7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Correspondense/DialogItem/DialogsItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Correspondense/Message/Message.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Correspondense/Correspondense.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Correspondense/Correspondense.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Correspondense/Correspondense.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Correspondense/Correspondense.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -37,7 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Profile/ProfileInfo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Correspondense/DialogItem" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -49,15 +45,16 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\nodejs\my-app\src\components\Profile\MyPosts" />
+      <recent name="D:\nodejs\my-app\src\components\Header" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\nodejs\my-repository\src\components\Correspondense\DialogItem" />
       <recent name="D:\nodejs\my-repository\src\components\Profile\ProfileInfo" />
       <recent name="D:\nodejs\my-repository\src\components" />
       <recent name="D:\nodejs\my-app\src\components\Profile\MyPosts\SinglePost" />
       <recent name="D:\nodejs\my-app\src\components\Profile\MyPosts" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\nodejs\my-app\src\components\Profile\MyPosts" />
-      <recent name="D:\nodejs\my-app\src\components\Header" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -82,6 +79,7 @@
       <workItem from="1583344691291" duration="1821000" />
       <workItem from="1583351641295" duration="685000" />
       <workItem from="1583442595031" duration="6998000" />
+      <workItem from="1583562291288" duration="5476000" />
     </task>
     <servers />
   </component>
@@ -117,5 +115,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="523" y="139" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583273822742" />
+    <state x="1176" y="350" width="672" height="678" key="search.everywhere.popup" timestamp="1583569198245">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1176" y="350" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583569198245" />
   </component>
 </project>
