@@ -13,18 +13,19 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 
 
-const App = () => {
+const App = (props) => {
+
   return (
     <BrowserRouter>
         <div className='app-wrapper'>
             <Header />
             <Navigation />
             <div className="app-wrapper-content">
-                <Route path='/correspondense' component={Correspondense}/>
-                <Route path='/profile' component={Profile}/>
-                <Route path='/news' component={News}/>
-                <Route path='/music' component={Music}/>
-                <Route path='/settings' component={Settings}/>
+                <Route path='/correspondense' render={ () => <Correspondense converstations={props.newState.correspondence.conversationData} messages={props.newState.correspondence.messagesData} />}/>
+                <Route path='/profile' render={ () => <Profile postsData={props.newState.profile.posts} />} />
+                <Route path='/news' render={ () => <News />} />
+                <Route path='/music' render={ () => <Music />} />
+                <Route path='/settings' render={ () => <Settings />} />
             </div>
         </div>
     </BrowserRouter>

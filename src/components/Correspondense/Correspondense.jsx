@@ -6,21 +6,8 @@ import Message from "./Message/Message";
 
 const Correspondense = (props) => {
 
-    let conversationData = [
-        {id: 1, name: 'Dimych'},
-        {id: 2, name: 'Vitek'},
-        {id: 3, name: 'Sveta'},
-        {id: 4, name: 'Valera'},
-    ]
-
-    let messagesData = [
-        {id: 1, message: "how is your it-kamasutra"},
-        {id: 2, message: "why"},
-        {id: 3, message: "yo"},
-    ]
-
-    let Dialogs = conversationData.map( d => <DialogItem name={d.name} id={d.id} /> );
-    let Messages = messagesData.map( m => <Message message={m.message} id={m.id} /> )
+    let Dialogs = props.converstations.map( d => <DialogItem name={d.name} id={d.id} /> );
+    let Messages = props.messages.map( m => <Message message={m.message} id={m.id} /> );
 
     return (
         <div className={c.correspondense}>
