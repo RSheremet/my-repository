@@ -17,8 +17,32 @@ let state = {
             {id: 1, posti: 'Its my own cosial network', ILikeIt: 15},
             {id: 2, posti: 'Sounds fantastic!', ILikeIt: 20}
         ]
-    }
+    },
+    friendsList: {
+        friendsName: [
+            {name: 'dimych', id: 1},
+            {name: 'vitek', id: 2},
+            {name: 'sveta', id: 3},
+            {name: 'valera', id: 4}
+        ],
+        friendsAge: [
+            {age: 23},
+            {age: 24},
+            {age: 25},
+            {age: 26}
+        ]
+    },
+}
+
+export let addDescription = (plot) => {
+        debugger
+        let description = {
+            id: 4,
+            name: plot
+        }
+        state.correspondence.conversationData.push(description)
 
 }
+
 
 export default state;

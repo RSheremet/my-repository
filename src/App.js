@@ -9,6 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
+import FriendsList from "./components/FriendsList/FriendsList";
 
 
 
@@ -22,10 +23,11 @@ const App = (props) => {
             <Navigation />
             <div className="app-wrapper-content">
                 <Route path='/correspondense' render={ () => <Correspondense converstations={props.newState.correspondence.conversationData} messages={props.newState.correspondence.messagesData} />}/>
-                <Route path='/profile' render={ () => <Profile postsData={props.newState.profile.posts} />} />
+                <Route path='/profile' render={ () => <Profile postsData={props.newState.profile.posts} description={props.description} />} />
                 <Route path='/news' render={ () => <News />} />
                 <Route path='/music' render={ () => <Music />} />
                 <Route path='/settings' render={ () => <Settings />} />
+                <Route path='/friendsList' render={ () => <FriendsList name={props.newState.friendsList.friendsName} age={props.newState.friendsList.friendsAge}/>} />
             </div>
         </div>
     </BrowserRouter>

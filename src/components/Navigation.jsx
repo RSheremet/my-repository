@@ -22,6 +22,9 @@ const Navigation = () => {
         <div className={menu}>
             <a href="/settings">Settings</a>
         </div>
+        <div className={menu}>
+            <a href="/friendsList">FriendsList</a>
+        </div>
     </nav>
     )
 }
