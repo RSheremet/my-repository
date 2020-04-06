@@ -28,3 +28,13 @@ a {
     text-align: none;
     color: black;
 }
+
+.toWriteMessageTextareaButton {
+    display: flex;
+    flex-direction: column;
+    width: 197px;
+}
+
+.toWriteMessageTextareaButton button {
+    margin-top: 15px;
+}

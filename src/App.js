@@ -16,18 +16,40 @@ import FriendsList from "./components/FriendsList/FriendsList";
 
 const App = (props) => {
 
+    debugger
+
   return (
     <BrowserRouter>
         <div className='app-wrapper'>
             <Header />
             <Navigation />
             <div className="app-wrapper-content">
-                <Route path='/correspondense' render={ () => <Correspondense converstations={props.newState.correspondence.conversationData} messages={props.newState.correspondence.messagesData} />}/>
-                <Route path='/profile' render={ () => <Profile postsData={props.newState.profile.posts} description={props.description} />} />
-                <Route path='/news' render={ () => <News />} />
-                <Route path='/music' render={ () => <Music />} />
-                <Route path='/settings' render={ () => <Settings />} />
-                <Route path='/friendsList' render={ () => <FriendsList name={props.newState.friendsList.friendsName} age={props.newState.friendsList.friendsAge}/>} />
+                <Route path='/correspondense'
+                       render={ () => <Correspondense
+                           converstations={props.newState.correspondence.conversationData}
+                           messages={props.newState.correspondence.messagesData}
+                           correspondenseChange={props.newState.correspondenseChange.changed}
+                           dispatch={props.dispatch} />}
+                />
+                <Route path='/profile'
+                       render={ () => <Profile postsData={props.newState.profile.posts}
+                                               valdef={props.newState.valdef.valueDefault}
+                                               dispatch={props.dispatch} />}
+                />
+                <Route path='/news'
+                       render={ () => <News />}
+                />
+                <Route path='/music'
+                       render={ () => <Music />}
+                />
+                <Route path='/settings'
+                       render={ () => <Settings />}
+                />
+                <Route path='/friendsList'
+                       render={ () => <FriendsList
+                           name={props.newState.friendsList.friendsName}
+                           age={props.newState.friendsList.friendsAge}/>}
+                />
             </div>
         </div>
     </BrowserRouter>

@@ -1,6 +1,9 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from "./SinglePost/Post";
+import {addDynamicChangeCreator, addPostActionCreator} from "../../../Redux/profileValdef-reducer";
+
+
 
 
 const MyPosts = (props) => {
@@ -8,11 +11,15 @@ const MyPosts = (props) => {
     let postsElements = props.postsData.map( p => <Post posti={p.posti} IlikeIt={p.ILikeIt} />);
 
     let stringElement = React.createRef()
-    let matth = () => {
 
-        let Something = stringElement.current.value;
-        props.description(Something)
-        debugger
+    let addPost = () => {
+        props.dispatch( addPostActionCreator() )
+    }
+
+    let beenChanged = () => {
+        let changedState = stringElement.current.value;
+        let action = addDynamicChangeCreator(changedState);
+        props.dispatch({...action})
     }
 
     return (
@@ -23,9 +30,9 @@ const MyPosts = (props) => {
             </div>
             {postsElements}
             <div>
-                <textarea ref={stringElement}></textarea>
+                <textarea ref={stringElement} value={props.valdef} onChange={beenChanged}></textarea>
             </div>
-            <button onClick={matth}>Нажми на меня</button>
+            <button onClick={addPost}>Нажми на меня</button>
         </div>
     )
 }
