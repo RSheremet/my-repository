@@ -7,18 +7,12 @@ import {addCorrespondenseChangeCreator, addCorrespondenseClickCreator} from "../
 
 const Correspondense = (props) => {
 
-    let Dialogs = props.converstations.map( d => <DialogItem name={d.name} id={d.id} /> );
+    let Dialogs = props.conversations.map( d => <DialogItem name={d.name} id={d.id} /> );
     let Messages = props.messages.map( m => <Message message={m.message} id={m.id} /> );
-    let changeCurrentMessage = props.correspondenseChange
-
-    let addMessage = () => {
-        props.dispatch( addCorrespondenseClickCreator() )
-    }
 
     let dynamicChange = (e) => {
         let changeValue = e.target.value
-        let body = addCorrespondenseChangeCreator(changeValue)
-        props.dispatch({...body})
+        props.onDynamicChange( changeValue )
     }
 
     return (
@@ -31,8 +25,8 @@ const Correspondense = (props) => {
                     {Messages}
                </div>
                <div className={c.toWriteMessageTextareaButton}>
-                   <textarea value={changeCurrentMessage} onChange={dynamicChange}></textarea>
-                   <button onClick={addMessage}>Отправить</button>
+                   <textarea value={ props.onChangeCurrentMessage } onChange={dynamicChange}></textarea>
+                   <button onClick={ props.onAddMessage }>Отправить</button>
                </div>
            </div>
         </div>

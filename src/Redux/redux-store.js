@@ -3,10 +3,8 @@ import reduceAddPost from "./profileValdef-reducer";
 import correspondense from "./correspondense-reducer";
 
 let reducers = combineReducers({
-    profile: reduceAddPost,
-    valdef: reduceAddPost,
-    correspondenseChange: correspondense,
-    correspondence: correspondense
+    reduceAddPost,
+    correspondense
 })
 
 let store = createStore( reducers )

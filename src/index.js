@@ -1,14 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './Redux/redux-store';
+import StoreContext from "./components/reactContext";
+import {BrowserRouter} from "react-router-dom";
 
 
 
 let toRender = (state) => {
-    ReactDOM.render(<App newState={store.getState()} dispatch={store.dispatch.bind(store)}/>, document.getElementById('root'));
+    ReactDOM.render(
+        <BrowserRouter>
+            <StoreContext.Provider value={store}>
+                <App />
+            </StoreContext.Provider>
+        </BrowserRouter>, document.getElementById('root'));
 }
 
 toRender(store.getState())
