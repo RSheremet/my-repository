@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation";
@@ -10,6 +9,7 @@ import Settings from "./components/Settings/Settings";
 import FriendsList from "./components/FriendsList/FriendsList";
 import CorrespondenseContainer from "./components/Correspondense/CorrespondenseContainer";
 import {Route} from "react-router-dom";
+import Provider from "react-redux";
 
 
 
@@ -23,11 +23,17 @@ const App = (props) => {
             <Navigation />
             <div className="app-wrapper-content">
                 <Route path='/correspondense'
-                       render={ () => <CorrespondenseContainer />
+                       render={ () =>
+                           <CorrespondenseContainer
+                               store={ props.store }
+                           />
                        }
                 />
                 <Route path='/profile'
-                       render={ () => <Profile />
+                       render={ () =>
+                           <Profile
+                               store={ props.store }
+                           />
                        }
                 />
                 <Route path='/news'

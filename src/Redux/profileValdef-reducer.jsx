@@ -25,10 +25,19 @@ const  reduceAddPost = (state = initialProfile, action) => {
             ILikeIt: 2
         }
 
-        state.profile.posts.push(description)
-        state.valdef.valueDefault = ''
+        let stateCopy = {...state}
+
+        stateCopy.profile = {...state.profile}
+        stateCopy.profile.posts = [...state.profile.posts]
+
+        stateCopy.profile.posts.push(description)
+        stateCopy.valdef.valueDefault = ''
+        
+        return stateCopy
     } else if (action.type === DYNAMIC_CHANGE) {
-        state.valdef.valueDefault = action.toHeal
+        let stateCopy = {...state}
+        stateCopy.valdef.valueDefault = action.toHeal
+        return stateCopy
     }
     return state
 }

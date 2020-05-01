@@ -5,18 +5,20 @@ import Post from "./SinglePost/Post";
 
 
 
-const MyPosts = (props) => {
+const MyPosts = ( props ) => {
 
-    let postsElements = props.postsData.map( p => <Post posti={p.posti} IlikeIt={p.ILikeIt} />);
+    console.log( props )
+
+    let postsElements = props.postsData.map( p => <Post posti={p.posti} key={p.id} IlikeIt={p.ILikeIt} />);
 
 
     let addPost = () => {
-        props.onAddPost()
+        props.addPost()
     }
 
     let beenChanged = (e) => {
         let changedState = e.target.value
-        props.whenBeenChanged( changedState )
+        props.beenChanged( changedState )
     }
 
     return (

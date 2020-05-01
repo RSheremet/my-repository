@@ -1,37 +1,33 @@
 import React from 'react';
 import correspondense, {addCorrespondenseChangeCreator, addCorrespondenseClickCreator} from "../../Redux/correspondense-reducer";
 import Correspondense from "./Correspondense";
-import StoreContext from "../reactContext";
+import {connect} from 'react-redux'
 
-const CorrespondenseContainer = (props) => {
 
-    /*let state = props.store.getState()*/
-
-       return <StoreContext.Consumer>
-            { store => {
-
-        let changeCurrentMessage = store.getState().correspondense.correspondenseChange.changed
-
-        let addMessage = () => {
-            store.dispatch( addCorrespondenseClickCreator() )
-        }
-
-        let dynamicChange = (changeValue) => {
-            let body = addCorrespondenseChangeCreator(changeValue)
-            store.dispatch({...body})
-        }
-
-        return (<Correspondense
-            onDynamicChange={dynamicChange}
-            onChangeCurrentMessage={changeCurrentMessage}
-            onAddMessage={addMessage}
-            conversations={store.getState().correspondense.correspondence.conversationData}
-            messages={store.getState().correspondense.correspondence.messagesData}
-        />)
-          }
-        }
-       </StoreContext.Consumer>
+let mapStateToProps = ( state ) => {
+    return {
+        changeCurrentMessage: state.correspondense.correspondenseChange.changed,
+        conversations: state.correspondense.correspondence.conversationData,
+        messages: state.correspondense.correspondence.messagesData
     }
+}
+
+let mapDispatchToProps = ( dispatch ) => {
+    return {
+
+        addMessage: () => {
+            dispatch( addCorrespondenseClickCreator() )
+        },
+
+        dynamicChange: (changeValue) => {
+            let body = addCorrespondenseChangeCreator(changeValue)
+            dispatch({...body})
+        }
+
+    }
+}
+
+const CorrespondenseContainer = connect( mapStateToProps, mapDispatchToProps )( Correspondense )
 
 
 export default CorrespondenseContainer;
