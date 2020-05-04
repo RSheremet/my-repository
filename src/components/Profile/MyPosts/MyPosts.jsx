@@ -7,8 +7,6 @@ import Post from "./SinglePost/Post";
 
 const MyPosts = ( props ) => {
 
-    console.log( props )
-
     let postsElements = props.postsData.map( p => <Post posti={p.posti} key={p.id} IlikeIt={p.ILikeIt} />);
 
 

@@ -13,7 +13,7 @@ const Correspondense = (props) => {
 
     let dynamicChange = (e) => {
         let changeValue = e.target.value
-        props.dynamicChange( changeValue )
+        props.dynamicChangee( changeValue )
     }
 
     return (

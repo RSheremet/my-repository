@@ -24,17 +24,33 @@ let initialCorrespondense = {
 
 
 const correspondense = (state = initialCorrespondense, action) => {
-    if (action.type === CORRESPONDENSE_STATIC_CHANGE ) {
-        let newMessage = {
-            id: 5,
-            message: state.correspondenseChange.changed
-        }
-        state.correspondence.messagesData.push(newMessage) // добавление текста из того, что находится в хранилище
-        state.correspondenseChange.changed = '' // изменение в хранилище для textarea
-    } else if (action.type === CORRESPONDENSE_DYNAMIC_CHANGE) {
-        state.correspondenseChange.changed = action.toChange // изменение в хранилище для textarea
+
+    let stateCopy
+    switch (action.type) {
+        case CORRESPONDENSE_STATIC_CHANGE:
+            let newMessage = state.correspondenseChange.changed  // сохранение текста из старого state
+            stateCopy = {
+                ...state,
+                correspondence: {
+                    conversationData: [...state.correspondence.conversationData],
+                    messagesData: [...state.correspondence.messagesData, {id: 5, message: newMessage}] // добавление текста из того, что находится в хранилище
+                },
+                correspondenseChange: {
+                    changed: '' // изменение в хранилище для textarea
+                }
+            }
+            return stateCopy
+        case CORRESPONDENSE_DYNAMIC_CHANGE:
+            stateCopy = {
+                ...state,
+                correspondenseChange: {
+                    changed: action.toChange // изменение в хранилище для textarea
+                }
+            }
+            return stateCopy
+        default:
+            return state
     }
-    return state
 }
 
 export const addCorrespondenseChangeCreator = (toChange) => ({ type: CORRESPONDENSE_DYNAMIC_CHANGE, toChange }) // сопоставление "пароля" для реализации кода

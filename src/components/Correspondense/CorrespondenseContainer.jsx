@@ -19,7 +19,7 @@ let mapDispatchToProps = ( dispatch ) => {
             dispatch( addCorrespondenseClickCreator() )
         },
 
-        dynamicChange: (changeValue) => {
+        dynamicChangee: (changeValue) => {
             let body = addCorrespondenseChangeCreator(changeValue)
             dispatch({...body})
         }

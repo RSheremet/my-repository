@@ -18,28 +18,33 @@ let initialProfile = {
 }
 
 const  reduceAddPost = (state = initialProfile, action) => {
-    if (action.type === ADD_POST) {
-        let description = {
-            id: 3,
-            posti: state.valdef.valueDefault,
-            ILikeIt: 2
-        }
 
-        let stateCopy = {...state}
+    let stateCopy
+    switch (action.type) {
+        case ADD_POST:
+            let description = state.valdef.valueDefault
+            stateCopy = {
+                ...state,
+                profile: {
+                    posts: [...state.profile.posts, {id: 3, posti: description, ILikeIt: 2}]
+                },
+                valdef: {
+                    valueDefault: '' // изменение в хранилище для textarea
+                }
+            }
+            return stateCopy
+        case DYNAMIC_CHANGE:
+            stateCopy = {
+                ...state,
+                valdef: {
+                    valueDefault: action.toHeal
+                }
+            }
+            return stateCopy
+        default:
+            return state
 
-        stateCopy.profile = {...state.profile}
-        stateCopy.profile.posts = [...state.profile.posts]
-
-        stateCopy.profile.posts.push(description)
-        stateCopy.valdef.valueDefault = ''
-        
-        return stateCopy
-    } else if (action.type === DYNAMIC_CHANGE) {
-        let stateCopy = {...state}
-        stateCopy.valdef.valueDefault = action.toHeal
-        return stateCopy
     }
-    return state
 }
 
 export const addPostActionCreator = () => ({ type: ADD_POST })
