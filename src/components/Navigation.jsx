@@ -14,6 +14,9 @@ const Navigation = () => {
             <a href="/correspondense">Messages</a>
         </div>
         <div className={menu}>
+            <a href="/users">Users</a>
+        </div>
+        <div className={menu}>
             <a href="/news">News</a>
         </div>
         <div className={menu}>

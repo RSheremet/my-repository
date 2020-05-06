@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import store from './Redux/redux-store';
 import {BrowserRouter} from "react-router-dom";
 
+
     ReactDOM.render(
+
         <BrowserRouter>
                 <App store={store} />
         </BrowserRouter>, document.getElementById('root'));

@@ -9,7 +9,7 @@ import Settings from "./components/Settings/Settings";
 import FriendsList from "./components/FriendsList/FriendsList";
 import CorrespondenseContainer from "./components/Correspondense/CorrespondenseContainer";
 import {Route} from "react-router-dom";
-import Provider from "react-redux";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 
@@ -32,6 +32,13 @@ const App = (props) => {
                 <Route path='/profile'
                        render={ () =>
                            <Profile
+                               store={ props.store }
+                           />
+                       }
+                />
+                <Route path='/users'
+                       render={ () =>
+                           <UsersContainer
                                store={ props.store }
                            />
                        }

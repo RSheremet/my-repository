@@ -1,0 +1,29 @@
+.wrapper {
+    max-width: 1200px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+.user {
+
+}
+
+.user_photo {
+    width: 150px;
+    height: 96px;
+    object-fit: cover;
+}
+
+.user_name {
+    text-align: center;
+}
+
+.breakdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
