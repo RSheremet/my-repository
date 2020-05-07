@@ -1,18 +1,19 @@
 import React from "react";
+import {render} from "react-dom";
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const CHANGE_PAGE = 'CHANGE-PAGE';
+const CHANGE_TOTAL_USERS_COUNT = 'CHANGE-TOTAL-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 let usersData = {
 
-    users: [
-        /*{id: 1, name: 'Valera', adress: {country: 'Russia', city: 'Moscow'}, followed: false,
-            photo:'https://lh3.googleusercontent.com/proxy/fdUOncdF4Cvmo4_tLsYdi1LdQMfu5seKEAlf_2CY6laR0nQQj-peYYhGkTCcn-NZiogQAobpi01OHJHh1cdYMYRKSxgT9y8OVDQAbgVy-JBQHCIMRkY'},
-        {id: 2, name: 'Igor', adress: {country: 'Belarus', city: 'Minsk'}, followed: true,
-            photo: 'https://www.meme-arsenal.com/memes/35d219e36fe1ce26570f4aa3c740b15f.jpg'},
-        {id: 3, name: 'Roman', adress: {country: 'Ukraine', city: 'Kiev'}, followed: false,
-            photo: 'https://cdn.fishki.net/upload/post/2018/01/28/2495548/2-mnnfhsfa.jpg'}*/
-    ]
+    users: [],
+    pageSize: 3,
+    totalUsersCount: 1,
+    currentPage: 2,
+    isFetching: false
 
 };
 
@@ -47,7 +48,19 @@ const  reduceUsers = (state = usersData, action) => {
             return stateCopy;
 
         case SET_USERS:
-            stateCopy = { ...state, users: [...state.users, ...action.users] };
+            stateCopy = { ...state, users: [...action.users] };
+            return stateCopy;
+
+        case CHANGE_PAGE:
+            stateCopy = {...state, currentPage: action.pageId };
+            return stateCopy;
+
+        case CHANGE_TOTAL_USERS_COUNT:
+            stateCopy = {...state, totalUsersCount: action.number}
+            return stateCopy;
+
+        case TOGGLE_IS_FETCHING:
+            stateCopy = {...state, isFetching: action.isFetching}
             return stateCopy;
 
         default:
@@ -59,5 +72,9 @@ const  reduceUsers = (state = usersData, action) => {
 export const followUser = ( userId ) => ({ type: FOLLOW, userId });
 export const unFollowUser = ( userId ) => ({ type: UNFOLLOW, userId });
 export const setUsers = ( users ) => ({ type: SET_USERS, users });
+export const toChangePage = ( pageId ) => ({ type: CHANGE_PAGE, pageId });
+export const toChangeTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUNT, number });
+export const toChangeFetching = ( isFetching ) => ({ type: TOGGLE_IS_FETCHING, isFetching })
+
 
 export default reduceUsers;

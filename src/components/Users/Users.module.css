@@ -27,3 +27,13 @@
     align-items: center;
     flex-direction: column;
 }
+
+.selectedPage {
+    color: red;
+    margin-left: 10px;
+}
+
+.unselected_page {
+    cursor: pointer;
+    margin-left: 10px;
+}
