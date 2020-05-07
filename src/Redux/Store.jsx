@@ -1,4 +1,4 @@
-import reduceAddPost from "./profileValdef-reducer";
+import reduceAddPost from "./profile-reducer";
 import correspondense from "./correspondense-reducer";
 
 let store = {

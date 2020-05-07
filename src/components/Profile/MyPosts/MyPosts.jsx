@@ -15,7 +15,7 @@ const MyPosts = ( props ) => {
     }
 
     let beenChanged = (e) => {
-        let changedState = e.target.value
+        let changedState = e.target.value;
         props.beenChanged( changedState )
     }
 

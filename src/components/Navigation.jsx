@@ -8,7 +8,7 @@ const Navigation = () => {
     return (
     <nav className={classes.nav}>
         <div className={menu}>
-            <a href="/profile">Profile</a>
+            <a href="/profile/:userID">Profile</a>
         </div>
         <div className={menu}>
             <a href="/correspondense">Messages</a>

@@ -56,11 +56,11 @@ const  reduceUsers = (state = usersData, action) => {
             return stateCopy;
 
         case CHANGE_TOTAL_USERS_COUNT:
-            stateCopy = {...state, totalUsersCount: action.number}
+            stateCopy = {...state, totalUsersCount: action.number};
             return stateCopy;
 
         case TOGGLE_IS_FETCHING:
-            stateCopy = {...state, isFetching: action.isFetching}
+            stateCopy = {...state, isFetching: action.isFetching};
             return stateCopy;
 
         default:
@@ -69,12 +69,12 @@ const  reduceUsers = (state = usersData, action) => {
     }
 };
 
-export const followUser = ( userId ) => ({ type: FOLLOW, userId });
-export const unFollowUser = ( userId ) => ({ type: UNFOLLOW, userId });
-export const setUsers = ( users ) => ({ type: SET_USERS, users });
-export const toChangePage = ( pageId ) => ({ type: CHANGE_PAGE, pageId });
-export const toChangeTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUNT, number });
-export const toChangeFetching = ( isFetching ) => ({ type: TOGGLE_IS_FETCHING, isFetching })
+export const toFollow = ( userId ) => ({ type: FOLLOW, userId });
+export const toUnFollow = ( userId ) => ({ type: UNFOLLOW, userId });
+export const toUpdateUsers = ( users ) => ({ type: SET_USERS, users });
+export const changePage = ( pageId ) => ({ type: CHANGE_PAGE, pageId });
+export const setTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUNT, number });
+export const setFetching = ( isFetching ) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 
 export default reduceUsers;

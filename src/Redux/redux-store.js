@@ -1,14 +1,16 @@
 import {combineReducers, createStore} from "redux";
-import reduceAddPost from "./profileValdef-reducer";
 import correspondense from "./correspondense-reducer";
 import reduceUsers from "./users-reducer";
+import profileRD from "./profile-reducer";
 
 let reducers = combineReducers({
-    reduceAddPost,
+    profileRD,
     correspondense,
     reduceUsers
 })
 
-let store = createStore( reducers )
+let store = createStore( reducers );
 
-export default store
+window.store = store;
+
+export default store;

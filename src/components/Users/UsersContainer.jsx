@@ -1,11 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
 import reduceUsers, {
-    followUser,
-    setUsers, toChangeFetching,
-    toChangePage,
-    toChangeTotalUsersCount,
-    unFollowUser
+    toFollow,
+    toUpdateUsers, setFetching,
+    changePage,
+    setTotalUsersCount,
+    toUnFollow
 } from "../../Redux/users-reducer";
 import * as axios from "axios";
 import Users from "./Users";
@@ -20,8 +20,8 @@ class UsersAPIComponent extends React.Component {
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
                 this.props.setFetching( false );
                 this.props.toUpdateUsers(response.data.items);
-                let num = response.data.totalCount/180
-                num = Math.ceil(num)
+                let num = response.data.totalCount/180;
+                num = Math.ceil(num);
                 this.props.setTotalUsersCount(num);
             });
         }
@@ -31,7 +31,7 @@ class UsersAPIComponent extends React.Component {
         this.props.setFetching( true );
         this.props.changePage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
-            this.props.setFetching( false )
+            this.props.setFetching( false );
             this.props.toUpdateUsers(response.data.items);
         });
     }
@@ -41,7 +41,7 @@ class UsersAPIComponent extends React.Component {
 
     render() {
 
-        let pagesCount = this.props.totalUsersCount/this.props.pageSize
+        let pagesCount = this.props.totalUsersCount/this.props.pageSize;
         pagesCount = Math.ceil( pagesCount );
 
         let pages = [];
@@ -75,7 +75,7 @@ let mapStateToProps = ( state ) => {
     }
 };
 
-let mapDispatchToProps = ( dispatch ) => {
+/*let mapDispatchToProps = ( dispatch ) => {
     return {
         toFollow: ( uId ) => {
             dispatch( followUser(uId) )
@@ -97,8 +97,8 @@ let mapDispatchToProps = ( dispatch ) => {
         }
 
     }
-};
+};*/
 
-const UsersContainer = connect( mapStateToProps, mapDispatchToProps )(UsersAPIComponent);
+const UsersContainer = connect( mapStateToProps, { toFollow, toUnFollow, toUpdateUsers, changePage, setTotalUsersCount, setFetching } )(UsersAPIComponent);
 
 export default UsersContainer

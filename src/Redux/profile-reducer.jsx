@@ -1,6 +1,7 @@
 import React from "react";
-const ADD_POST = 'ADD-POST'
-const DYNAMIC_CHANGE = 'DYNAMIC-CHANGE'
+const ADD_POST = 'ADD-POST';
+const DYNAMIC_CHANGE = 'DYNAMIC-CHANGE';
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
 let initialProfile = {
 
@@ -8,7 +9,8 @@ let initialProfile = {
         posts: [
             {id: 1, posti: 'Its my own cosial network', ILikeIt: 15},
             {id: 2, posti: 'Sounds fantastic!', ILikeIt: 20}
-        ]
+        ],
+        singleProfile: null
     },
 
     valdef: {
@@ -17,9 +19,9 @@ let initialProfile = {
 
 }
 
-const  reduceAddPost = (state = initialProfile, action) => {
+const  profileRD = (state = initialProfile, action) => {
 
-    let stateCopy
+    let stateCopy;
     switch (action.type) {
         case ADD_POST:
             let description = state.valdef.valueDefault
@@ -32,7 +34,7 @@ const  reduceAddPost = (state = initialProfile, action) => {
                     valueDefault: '' // изменение в хранилище для textarea
                 }
             }
-            return stateCopy
+            return stateCopy;
         case DYNAMIC_CHANGE:
             stateCopy = {
                 ...state,
@@ -40,14 +42,25 @@ const  reduceAddPost = (state = initialProfile, action) => {
                     valueDefault: action.toHeal
                 }
             }
-            return stateCopy
+            return stateCopy;
+        case SET_USER_PROFILE:
+            stateCopy = {
+                ...state,
+                profile: {
+                    posts: [...state.profile.posts],
+                    singleProfile: action.file
+                }
+            };
+            return stateCopy;
         default:
-            return state
+            return state;
 
     }
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const addDynamicChangeCreator = (toHeal) => ({ type: DYNAMIC_CHANGE, toHeal })
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const addDynamicChangeCreator = (toHeal) => ({ type: DYNAMIC_CHANGE, toHeal });
+export const setUserProfile = (file) => ({ type: SET_USER_PROFILE, file });
 
-export default reduceAddPost;
+
+export default profileRD;

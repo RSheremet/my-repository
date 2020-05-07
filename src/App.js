@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation";
-import Profile from "./components/Profile";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -10,6 +9,7 @@ import FriendsList from "./components/FriendsList/FriendsList";
 import CorrespondenseContainer from "./components/Correspondense/CorrespondenseContainer";
 import {Route} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/ProfileContainer";
 
 
 
@@ -20,7 +20,9 @@ const App = (props) => {
 
         <div className='app-wrapper'>
             <Header />
-            <Navigation />
+            <Navigation
+                store={props.store}
+            />
             <div className="app-wrapper-content">
                 <Route path='/correspondense'
                        render={ () =>
@@ -29,9 +31,9 @@ const App = (props) => {
                            />
                        }
                 />
-                <Route path='/profile'
+                <Route path='/profile/:userID'
                        render={ () =>
-                           <Profile
+                           <ProfileContainer
                                store={ props.store }
                            />
                        }

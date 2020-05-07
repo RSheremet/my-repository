@@ -10,3 +10,75 @@
     background-color: yellow;
     height: 100%;
 }
+
+.wrapper {
+    display: flex;
+}
+
+.place_for_photo {
+    width: 20%;
+}
+
+.your_profiles_wrapper {
+    width: 80%;
+}
+
+.your_status {
+    border: 1px solid #ffffff0f;
+    border-radius: 5px;
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.your_status span {
+    font-size: 20px;
+}
+
+.full_name {
+    border: 1px solid #ffffff0f;
+    border-radius: 5px;
+    display: flex;
+    padding-left: 10px;
+}
+
+.full_name span:nth-child(2), .network span:nth-child(2) {
+    padding-left: 10px;
+}
+
+.contacts {
+
+}
+
+.contacts_inner {
+    border: 1px solid #ffffff0f;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.social_networks {
+    border: 1px solid #ffffff0f;
+    border-radius: 5px;
+}
+
+.network {
+    border: 1px solid #ffffff0f;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.searching_for_work {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.searching_for_work span {
+    padding-left: 10px;
+}
+
+.searching_for_work img {
+    margin-left: 50px;
+    width: 300px;
+}
