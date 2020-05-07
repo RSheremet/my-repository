@@ -38,11 +38,10 @@ const  reduceUsers = (state = usersData, action) => {
             stateCopy = {
                 ...state,
                 users: state.users.map( u => {
-                    if ( u.id === action.userId ) {
+                    if ( u.id === action.uuserId ) {
                         return { ...u, followed: true };
                     }
                     return u;
-
                 })
             };
             return stateCopy;
@@ -70,7 +69,7 @@ const  reduceUsers = (state = usersData, action) => {
 };
 
 export const toFollow = ( userId ) => ({ type: FOLLOW, userId });
-export const toUnFollow = ( userId ) => ({ type: UNFOLLOW, userId });
+export const toUnFollow = ( uuserId ) => ({ type: UNFOLLOW, uuserId });
 export const toUpdateUsers = ( users ) => ({ type: SET_USERS, users });
 export const changePage = ( pageId ) => ({ type: CHANGE_PAGE, pageId });
 export const setTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUNT, number });

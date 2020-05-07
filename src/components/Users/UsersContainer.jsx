@@ -17,7 +17,7 @@ class UsersAPIComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0) {
             this.props.setFetching( true );
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
                 this.props.setFetching( false );
                 this.props.toUpdateUsers(response.data.items);
                 let num = response.data.totalCount/180;
@@ -30,7 +30,7 @@ class UsersAPIComponent extends React.Component {
     onChangePage = (pageNumber) => {
         this.props.setFetching( true );
         this.props.changePage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
             this.props.setFetching( false );
             this.props.toUpdateUsers(response.data.items);
         });
@@ -58,6 +58,8 @@ class UsersAPIComponent extends React.Component {
                     users={this.props.users}
                     currentPage={this.props.currentPage}
                     isFetching={this.props.isFetching}
+                    toFollow={this.props.toFollow}
+                    toUnFollow={this.props.toUnFollow}
                 />
             </>
         )

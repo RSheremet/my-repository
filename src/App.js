@@ -10,6 +10,7 @@ import CorrespondenseContainer from "./components/Correspondense/CorrespondenseC
 import {Route} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 
@@ -19,7 +20,9 @@ const App = (props) => {
   return (
 
         <div className='app-wrapper'>
-            <Header />
+            <HeaderContainer
+                store={props.store}
+            />
             <Navigation
                 store={props.store}
             />

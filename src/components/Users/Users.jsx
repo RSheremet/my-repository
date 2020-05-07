@@ -2,6 +2,8 @@ import React from "react";
 import style from "./Users.module.css";
 import Photo from "../../images/logo.jpg"
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
+import {toFollow, toUnFollow} from "../../Redux/users-reducer";
 
 
 const Users = ( props ) =>  {
@@ -25,9 +27,34 @@ const Users = ( props ) =>  {
                                 <img src={u.photos.small !== null ? u.photos.small : Photo} className={style.user_photo} />
                             </NavLink>
                             <div className={style.user_name}>{u.name}</div>
-                            {/*{u.followed === true ?
-                                <button onClick={ () => { props.toFollow(u.id) } }>Unfollow</button> :
-                                <button onClick={ () => { props.toUnFollow(u.id)  } }>Follow</button>}*/}
+                            {u.followed === true ?
+                                <button onClick={ () =>
+
+                                     { axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "b891edb4-172f-4673-a388-0183624ea4a0"
+                                        }
+                                    }).then(response => {
+                                        if (response.data.resultCode == 0) {
+                                            props.toUnFollow(u.id)
+                                        }
+                                    })} }
+                                    >Unfollow</button>
+
+                                :
+                                <button onClick={ () => {
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "b891edb4-172f-4673-a388-0183624ea4a0"
+                                        }
+                                    })
+                                        .then(response => {
+                                    if (response.data.resultCode == 0) {
+                                        props.toFollow(u.id)
+                                    }
+                                })} }>Follow</button>}
                         </div>
                         {/*<div className={style.breakdown}>
                             <div className={style.country}>{u.adress.country}</div>
