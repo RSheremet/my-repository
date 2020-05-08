@@ -5,11 +5,13 @@ import reduceUsers, {
     toUpdateUsers, setFetching,
     changePage,
     setTotalUsersCount,
-    toUnFollow
+    toUnFollow, setButtonPressed
 } from "../../Redux/users-reducer";
 import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import {usersAPI} from "../API/API";
+
 
 
 class UsersAPIComponent extends React.Component {
@@ -17,10 +19,10 @@ class UsersAPIComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0) {
             this.props.setFetching( true );
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
+            usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
                 this.props.setFetching( false );
-                this.props.toUpdateUsers(response.data.items);
-                let num = response.data.totalCount/180;
+                this.props.toUpdateUsers(data.items);
+                let num = data.totalCount/180;
                 num = Math.ceil(num);
                 this.props.setTotalUsersCount(num);
             });
@@ -30,9 +32,9 @@ class UsersAPIComponent extends React.Component {
     onChangePage = (pageNumber) => {
         this.props.setFetching( true );
         this.props.changePage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
             this.props.setFetching( false );
-            this.props.toUpdateUsers(response.data.items);
+            this.props.toUpdateUsers(data.items);
         });
     }
 
@@ -60,6 +62,8 @@ class UsersAPIComponent extends React.Component {
                     isFetching={this.props.isFetching}
                     toFollow={this.props.toFollow}
                     toUnFollow={this.props.toUnFollow}
+                    setButtonPressed={this.props.setButtonPressed}
+                    isButtonPressed={this.props.isButtonPressed}
                 />
             </>
         )
@@ -73,7 +77,8 @@ let mapStateToProps = ( state ) => {
         pageSize: state.reduceUsers.pageSize,
         totalUsersCount: state.reduceUsers.totalUsersCount,
         currentPage: state.reduceUsers.currentPage,
-        isFetching: state.reduceUsers.isFetching
+        isFetching: state.reduceUsers.isFetching,
+        isButtonPressed: state.reduceUsers.isButtonPressed
     }
 };
 
@@ -101,6 +106,6 @@ let mapStateToProps = ( state ) => {
     }
 };*/
 
-const UsersContainer = connect( mapStateToProps, { toFollow, toUnFollow, toUpdateUsers, changePage, setTotalUsersCount, setFetching } )(UsersAPIComponent);
+const UsersContainer = connect( mapStateToProps, { toFollow, toUnFollow, toUpdateUsers, changePage, setTotalUsersCount, setFetching, setButtonPressed } )(UsersAPIComponent);
 
 export default UsersContainer

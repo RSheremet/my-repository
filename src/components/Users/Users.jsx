@@ -4,6 +4,7 @@ import Photo from "../../images/logo.jpg"
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
 import {toFollow, toUnFollow} from "../../Redux/users-reducer";
+import {usersAPI} from "../API/API";
 
 
 const Users = ( props ) =>  {
@@ -28,31 +29,25 @@ const Users = ( props ) =>  {
                             </NavLink>
                             <div className={style.user_name}>{u.name}</div>
                             {u.followed === true ?
-                                <button onClick={ () =>
+                                <button disabled={props.isButtonPressed.some( id => id === u.id)} onClick={ () => {
 
-                                     { axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                        withCredentials: true,
-                                        headers: {
-                                            "API-KEY": "b891edb4-172f-4673-a388-0183624ea4a0"
-                                        }
-                                    }).then(response => {
-                                        if (response.data.resultCode == 0) {
-                                            props.toUnFollow(u.id)
-                                        }
-                                    })} }
+                                 props.setButtonPressed( true, u.id );
+                                 usersAPI.toUnFollowRequest( u.id ).then(data => {
+                                    if (data.resultCode == 0) {
+                                        props.toUnFollow(u.id);
+                                        props.setButtonPressed( false, u.id );
+                                    }
+                                })} }
                                     >Unfollow</button>
 
                                 :
-                                <button onClick={ () => {
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                        withCredentials: true,
-                                        headers: {
-                                            "API-KEY": "b891edb4-172f-4673-a388-0183624ea4a0"
-                                        }
-                                    })
-                                        .then(response => {
-                                    if (response.data.resultCode == 0) {
-                                        props.toFollow(u.id)
+                                <button disabled={props.isButtonPressed.some( id => id === u.id)} onClick={ () => {
+
+                                    props.setButtonPressed( true, u.id );
+                                    usersAPI.toFollowRequest( u.id ).then(data => {
+                                    if (data.resultCode == 0) {
+                                        props.toFollow(u.id);
+                                        props.setButtonPressed( false, u.id );
                                     }
                                 })} }>Follow</button>}
                         </div>

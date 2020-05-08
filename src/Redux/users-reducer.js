@@ -6,6 +6,7 @@ const SET_USERS = 'SET-USERS';
 const CHANGE_PAGE = 'CHANGE-PAGE';
 const CHANGE_TOTAL_USERS_COUNT = 'CHANGE-TOTAL-USERS-COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+const BUTTON_ALREADY_PRESSED = 'BUTTON-ALREADY-PRESSED'
 
 let usersData = {
 
@@ -13,7 +14,8 @@ let usersData = {
     pageSize: 3,
     totalUsersCount: 1,
     currentPage: 2,
-    isFetching: false
+    isFetching: false,
+    isButtonPressed: []
 
 };
 
@@ -62,6 +64,15 @@ const  reduceUsers = (state = usersData, action) => {
             stateCopy = {...state, isFetching: action.isFetching};
             return stateCopy;
 
+        case BUTTON_ALREADY_PRESSED:
+            stateCopy = {
+                ...state,
+                isButtonPressed: action.isTueFalse
+                    ? [...state.isButtonPressed, action.userId]
+                    : [...state.isButtonPressed.filter(id => id !== action.userId)]
+            }
+            return stateCopy;
+
         default:
             return state;
 
@@ -74,6 +85,7 @@ export const toUpdateUsers = ( users ) => ({ type: SET_USERS, users });
 export const changePage = ( pageId ) => ({ type: CHANGE_PAGE, pageId });
 export const setTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUNT, number });
 export const setFetching = ( isFetching ) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const setButtonPressed = ( isTueFalse, userId  ) => ({ type: BUTTON_ALREADY_PRESSED, isTueFalse, userId });
 
 
 export default reduceUsers;
