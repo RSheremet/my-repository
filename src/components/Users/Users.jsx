@@ -1,13 +1,12 @@
 import React from "react";
 import style from "./Users.module.css";
 import Photo from "../../images/logo.jpg"
-import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {toFollow, toUnFollow} from "../../Redux/users-reducer";
-import {usersAPI} from "../API/API";
+import {NavLink, Redirect} from "react-router-dom";
 
 
 const Users = ( props ) =>  {
+
+    if (props.isAuth == false) return <Redirect to={'/login'} />;
 
         return (
             <div>
@@ -29,27 +28,18 @@ const Users = ( props ) =>  {
                             </NavLink>
                             <div className={style.user_name}>{u.name}</div>
                             {u.followed === true ?
-                                <button disabled={props.isButtonPressed.some( id => id === u.id)} onClick={ () => {
-
-                                 props.setButtonPressed( true, u.id );
-                                 usersAPI.toUnFollowRequest( u.id ).then(data => {
-                                    if (data.resultCode == 0) {
-                                        props.toUnFollow(u.id);
-                                        props.setButtonPressed( false, u.id );
-                                    }
-                                })} }
-                                    >Unfollow</button>
-
+                                <button disabled={props.isButtonPressed.some( id => id === u.id)}
+                                        onClick={ () => { props.followThunkCreator( u.id ) } }
+                                >Unfollow</button>
+                                    /*usersAPI.toUnFollowRequest( u.id ).then(data => { // П Р И М Е Р
+                                       if (data.resultCode == 0) { // П Р И М Е Р
+                                           props.toUnFollow(u.id); // П Р И М Е Р
+                                           props.setButtonPressed( false, u.id ); // П Р И М Е Р
+                                       } // П Р И М Е Р
+                                   })*/ // П Р И М Е Р
                                 :
-                                <button disabled={props.isButtonPressed.some( id => id === u.id)} onClick={ () => {
-
-                                    props.setButtonPressed( true, u.id );
-                                    usersAPI.toFollowRequest( u.id ).then(data => {
-                                    if (data.resultCode == 0) {
-                                        props.toFollow(u.id);
-                                        props.setButtonPressed( false, u.id );
-                                    }
-                                })} }>Follow</button>}
+                                <button disabled={props.isButtonPressed.some( id => id === u.id)}
+                                        onClick={ () => { props.unFollowThunkCreator( u.id ) } }>Follow</button>}
                         </div>
                         {/*<div className={style.breakdown}>
                             <div className={style.country}>{u.adress.country}</div>

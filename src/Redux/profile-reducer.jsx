@@ -1,4 +1,5 @@
 import React from "react";
+import {usersAPI} from "../components/API/API";
 const ADD_POST = 'ADD-POST';
 const DYNAMIC_CHANGE = 'DYNAMIC-CHANGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
@@ -61,6 +62,14 @@ const  profileRD = (state = initialProfile, action) => {
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const addDynamicChangeCreator = (toHeal) => ({ type: DYNAMIC_CHANGE, toHeal });
 export const setUserProfile = (file) => ({ type: SET_USER_PROFILE, file });
+
+export const getUserProfileThunkCreator = ( userID ) => {
+    return (dispatch) => {
+        usersAPI.getUserProfile( userID ).then(data => {
+            dispatch(setUserProfile(data))
+        })
+    }
+}
 
 
 export default profileRD;

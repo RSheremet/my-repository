@@ -11,6 +11,7 @@ import {Route} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 
 
@@ -48,22 +49,34 @@ const App = (props) => {
                            />
                        }
                 />
+                <Route path='/login'
+                       render={ () => <Login
+                           store={ props.store }
+                       />
+                       }
+                />
                 <Route path='/news'
-                       render={ () => <News />
+                       render={ () => <News
+                           store={ props.store }
+                       />
                        }
                 />
                 <Route path='/music'
-                       render={ () => <Music />
+                       render={ () => <Music
+                           store={ props.store }
+                       />
                        }
                 />
                 <Route path='/settings'
-                       render={ () => <Settings />
+                       render={ () => <Settings
+                           store={ props.store }
+                       />
                        }
                 />
                 <Route path='/friendsList'
                        render={ () => <FriendsList
-                           name={props.state.friendsList.friendsName}
-                           age={props.state.friendsList.friendsAge}/>
+                           store={ props.store }
+                       />
                        }
                 />
             </div>

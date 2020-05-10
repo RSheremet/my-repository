@@ -1,5 +1,6 @@
 import React from "react";
 import {render} from "react-dom";
+import {usersAPI} from "../components/API/API";
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -29,7 +30,7 @@ const  reduceUsers = (state = usersData, action) => {
                 ...state,
                 users: state.users.map( u => {
                     if ( u.id === action.userId ) {
-                        return { ...u, followed: false };
+                        return { ...u, followed: true };
                     }
                     return u;
                 })
@@ -41,7 +42,7 @@ const  reduceUsers = (state = usersData, action) => {
                 ...state,
                 users: state.users.map( u => {
                     if ( u.id === action.uuserId ) {
-                        return { ...u, followed: true };
+                        return { ...u, followed: false };
                     }
                     return u;
                 })
@@ -70,7 +71,7 @@ const  reduceUsers = (state = usersData, action) => {
                 isButtonPressed: action.isTueFalse
                     ? [...state.isButtonPressed, action.userId]
                     : [...state.isButtonPressed.filter(id => id !== action.userId)]
-            }
+            };
             return stateCopy;
 
         default:
@@ -79,7 +80,7 @@ const  reduceUsers = (state = usersData, action) => {
     }
 };
 
-export const toFollow = ( userId ) => ({ type: FOLLOW, userId });
+export const toFollowSuccess = ( userId ) => ({ type: FOLLOW, userId });
 export const toUnFollow = ( uuserId ) => ({ type: UNFOLLOW, uuserId });
 export const toUpdateUsers = ( users ) => ({ type: SET_USERS, users });
 export const changePage = ( pageId ) => ({ type: CHANGE_PAGE, pageId });
@@ -87,5 +88,55 @@ export const setTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUN
 export const setFetching = ( isFetching ) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const setButtonPressed = ( isTueFalse, userId  ) => ({ type: BUTTON_ALREADY_PRESSED, isTueFalse, userId });
 
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+
+    return (dispatch) => {
+        dispatch(setFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(setFetching(false));
+            dispatch(toUpdateUsers(data.items));
+            let num = data.totalCount / 180;
+            num = Math.ceil(num);
+            dispatch(setTotalUsersCount(num));
+        });
+    }
+};
+
+export const newPageGetUsers = (pageNumber, pageSize) => {
+
+    return (dispatch) => {
+        dispatch(setFetching( true ));
+        dispatch(changePage(pageNumber));
+        usersAPI.getUsers(pageNumber, pageSize).then(data => {
+            dispatch(setFetching( false ));
+            dispatch(toUpdateUsers(data.items));
+        });
+    }
+
+};
+
+export const followThunkCreator = ( usersId ) => {
+    return (dispatch) => {
+        dispatch(setButtonPressed( true, usersId ));
+        usersAPI.toUnFollowRequest( usersId ).then(data => {
+            if (data.resultCode == 0) {
+                dispatch(toUnFollow(usersId));
+                dispatch(setButtonPressed( false, usersId ));
+            }
+        })
+    }
+};
+
+export const unFollowThunkCreator = ( usersId ) => {
+    return (dispatch) => {
+        dispatch(setButtonPressed( true, usersId ));
+        usersAPI.toFollowRequest( usersId ).then(data => {
+            if (data.resultCode == 0) {
+                dispatch(toFollowSuccess(usersId));
+                dispatch(setButtonPressed( false, usersId ));
+            }
+        })
+    }
+};
 
 export default reduceUsers;

@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Navigation.module.css';
+import {NavLink} from "react-router-dom";
 
 
 let menu = `${classes.navMenu} ${classes.navActive}`;
@@ -8,25 +9,25 @@ const Navigation = () => {
     return (
     <nav className={classes.nav}>
         <div className={menu}>
-            <a href="/profile/:userID">Profile</a>
+            <NavLink to={"/profile/:userID"}>Profile</NavLink>
         </div>
         <div className={menu}>
-            <a href="/correspondense">Messages</a>
+            <NavLink to={"/correspondense"}>Messages</NavLink>
         </div>
         <div className={menu}>
-            <a href="/users">Users</a>
+            <NavLink to="/users">Users</NavLink>
         </div>
         <div className={menu}>
-            <a href="/news">News</a>
+            <NavLink to="/news">News</NavLink>
         </div>
         <div className={menu}>
-            <a href="/music">Music</a>
+            <NavLink to="/music">Music</NavLink>
         </div>
         <div className={menu}>
-            <a href="/settings">Settings</a>
+            <NavLink to="/settings">Settings</NavLink>
         </div>
         <div className={menu}>
-            <a href="/friendsList">FriendsList</a>
+            <NavLink to="/friendsList">FriendsList</NavLink>
         </div>
     </nav>
     )

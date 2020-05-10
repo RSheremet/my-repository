@@ -13,8 +13,8 @@ const Correspondense = (props) => {
 
     let dynamicChange = (e) => {
         let changeValue = e.target.value
-        props.dynamicChangee( changeValue )
-    }
+        props.addCorrespondenseChangeCreator( changeValue )
+    };
 
     return (
         <div className={style.correspondense}>
@@ -27,7 +27,7 @@ const Correspondense = (props) => {
                </div>
                <div className={style.toWriteMessageTextareaButton}>
                    <textarea value={ props.changeCurrentMessage } onChange={dynamicChange}></textarea>
-                   <button onClick={ props.addMessage }>Отправить</button>
+                   <button onClick={ props.addCorrespondenseClickCreator }>Отправить</button>
                </div>
            </div>
         </div>

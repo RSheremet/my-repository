@@ -3,6 +3,7 @@ import style from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import lfj from "../../../images/looking_for_job.jpeg";
 import hw from "../../../images/im_working.jpg"
+import {Redirect} from "react-router-dom";
 
 
 
@@ -12,12 +13,9 @@ const ProfileInfo = ( props ) => {
         return <Preloader/>
     }
 
-
-
     let p = props.profile
 
     let facebook
-
 
     return (
         <div>

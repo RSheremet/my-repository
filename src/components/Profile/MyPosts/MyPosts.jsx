@@ -1,11 +1,14 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from "./SinglePost/Post";
+import {Redirect} from "react-router-dom";
 
 
 
 
 const MyPosts = ( props ) => {
+
+    if (props.isAuth == false) return <Redirect to={'/login'} />;
 
     let postsElements = props.postsData.map( p => <Post posti={p.posti} key={p.id} IlikeIt={p.ILikeIt} />);
 

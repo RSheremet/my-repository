@@ -1,42 +1,44 @@
 import React from "react";
 import {connect} from "react-redux";
 import reduceUsers, {
-    toFollow,
-    toUpdateUsers, setFetching,
+    toUpdateUsers,
     changePage,
-    setTotalUsersCount,
-    toUnFollow, setButtonPressed
+    setButtonPressed, getUsersThunkCreator, newPageGetUsers, followThunkCreator, unFollowThunkCreator
 } from "../../Redux/users-reducer";
-import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import {usersAPI} from "../API/API";
+import {Redirect} from "react-router-dom";
+import CorrespondenseContainer from "../Correspondense/CorrespondenseContainer";
+import {AuthRedirectComponent} from "../hoc/AuthRedirectComponent";
+import {compose} from "redux";
+
+
 
 
 
 class UsersAPIComponent extends React.Component {
 
+
+
     componentDidMount() {
         if (this.props.users.length === 0) {
-            this.props.setFetching( true );
-            usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-                this.props.setFetching( false );
-                this.props.toUpdateUsers(data.items);
-                let num = data.totalCount/180;
-                num = Math.ceil(num);
-                this.props.setTotalUsersCount(num);
-            });
+            this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
         }
+        /*if (this.props.users.length === 0) { // П Р И М Е Р
+            this.props.setFetching( true ); // П Р И М Е Р
+            usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => { // П Р И М Е Р
+                this.props.setFetching( false ); // П Р И М Е Р
+                this.props.toUpdateUsers(data.items); // П Р И М Е Р
+                let num = data.totalCount/180; // П Р И М Е Р
+                num = Math.ceil(num); // П Р И М Е Р
+                this.props.setTotalUsersCount(num); // П Р И М Е Р
+            }); // П Р И М Е Р
+        }*/ // П Р И М Е Р
     }
 
     onChangePage = (pageNumber) => {
-        this.props.setFetching( true );
-        this.props.changePage(pageNumber);
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.setFetching( false );
-            this.props.toUpdateUsers(data.items);
-        });
-    }
+        this.props.newPageGetUsers(pageNumber, this.props.pageSize )
+    };
 
 
 
@@ -60,10 +62,11 @@ class UsersAPIComponent extends React.Component {
                     users={this.props.users}
                     currentPage={this.props.currentPage}
                     isFetching={this.props.isFetching}
-                    toFollow={this.props.toFollow}
-                    toUnFollow={this.props.toUnFollow}
                     setButtonPressed={this.props.setButtonPressed}
                     isButtonPressed={this.props.isButtonPressed}
+                    followThunkCreator={this.props.followThunkCreator}
+                    unFollowThunkCreator={this.props.unFollowThunkCreator}
+                    isAuth={this.props.isAuth}
                 />
             </>
         )
@@ -78,34 +81,48 @@ let mapStateToProps = ( state ) => {
         totalUsersCount: state.reduceUsers.totalUsersCount,
         currentPage: state.reduceUsers.currentPage,
         isFetching: state.reduceUsers.isFetching,
-        isButtonPressed: state.reduceUsers.isButtonPressed
+        isButtonPressed: state.reduceUsers.isButtonPressed,
+        isAuth: state.authRD.isAuth
     }
 };
 
-/*let mapDispatchToProps = ( dispatch ) => {
-    return {
-        toFollow: ( uId ) => {
-            dispatch( followUser(uId) )
-        },
-        toUnFollow: ( uId ) => {
-            dispatch( unFollowUser(uId) )
-        },
-        toUpdateUsers: ( allUsers ) => {
-            dispatch( setUsers( allUsers) )
-        },
-        changePage: ( page ) => {
-            dispatch( toChangePage(page) )
-        },
-        setTotalUsersCount: ( number ) => {
-            dispatch( toChangeTotalUsersCount(number) )
-        },
-        setFetching: ( isFetching ) => {
-            dispatch( toChangeFetching(isFetching) )
-        }
+/*let mapDispatchToProps = ( dispatch ) => { // П Р И М Е Р
+    return { // П Р И М Е Р
+        toFollow: ( uId ) => { // П Р И М Е Р
+            dispatch( followUser(uId) ) // П Р И М Е Р
+        }, // П Р И М Е Р
+        toUnFollow: ( uId ) => { // П Р И М Е Р
+            dispatch( unFollowUser(uId) ) // П Р И М Е Р
+        }, // П Р И М Е Р
+        toUpdateUsers: ( allUsers ) => { // П Р И М Е Р
+            dispatch( setUsers( allUsers) ) // П Р И М Е Р
+        }, // П Р И М Е Р
+        changePage: ( page ) => { // П Р И М Е Р
+            dispatch( toChangePage(page) ) // П Р И М Е Р
+        }, // П Р И М Е Р
+        setTotalUsersCount: ( number ) => { // П Р И М Е Р
+            dispatch( toChangeTotalUsersCount(number) ) // П Р И М Е Р
+        }, // П Р И М Е Р
+        setFetching: ( isFetching ) => { // П Р И М Е Р
+            dispatch( toChangeFetching(isFetching) ) // П Р И М Е Р
+        } // П Р И М Е Р
 
-    }
-};*/
+    } // П Р И М Е Р
+};*/ // П Р И М Е Р
 
-const UsersContainer = connect( mapStateToProps, { toFollow, toUnFollow, toUpdateUsers, changePage, setTotalUsersCount, setFetching, setButtonPressed } )(UsersAPIComponent);
 
-export default UsersContainer
+
+/*let UserRedirectComponent = AuthRedirectComponent(UsersAPIComponent); // П Р И М Е Р
+
+const UsersContainer = connect( mapStateToProps, { // П Р И М Е Р
+    toUpdateUsers, changePage, setButtonPressed, getUsersThunkCreator, // П Р И М Е Р
+    newPageGetUsers, followThunkCreator, unFollowThunkCreator } )(UserRedirectComponent);*/ // П Р И М Е Р
+
+
+
+export default compose(
+    connect( mapStateToProps, {
+        toUpdateUsers, changePage, setButtonPressed, getUsersThunkCreator,
+        newPageGetUsers, followThunkCreator, unFollowThunkCreator } ),
+    AuthRedirectComponent,
+)(UsersAPIComponent);

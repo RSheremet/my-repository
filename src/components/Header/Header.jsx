@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './Header.module.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 const Header = (props) => {
+
     return (
     <header className={style.header}>
         <div className={style.imgg}></div>
