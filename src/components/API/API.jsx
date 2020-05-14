@@ -44,11 +44,49 @@ export const usersAPI = {
         )
     },
     getUserProfile( userID ) {
+        return profileAPI.getUserProfile(userID)
+    }
+};
+
+export const profileAPI = {
+    getUserProfile( userID ) {
         return (
             instance.get(`profile/` + userID)
                 .then(response => {
                     return response.data
                 })
         )
+    },
+    sendStatus( status ) {
+        return (
+            instance.put('profile/status/', {status: status})
+        )
+    },
+    getUsersStatus( userId ) {
+        return (
+            instance.get('profile/status/' + userId)
+                .then(response => {
+                    return response.data
+                })
+        )
     }
-}
+};
+
+export const authAPI = {
+    authorization( email, password, rememberMe ) {
+        return (
+            instance.post(`auth/login?email=${email}&password=${password}&rememberMe=${rememberMe}`, {})
+                .then(response => {
+                    return response.data
+                })
+        )
+    },
+    deAuthorization() {
+        return (
+            instance.delete(`auth/login/`)
+                .then(response => {
+                    return response.data
+                })
+        )
+    }
+};

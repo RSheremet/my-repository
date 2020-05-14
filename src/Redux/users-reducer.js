@@ -12,7 +12,7 @@ const BUTTON_ALREADY_PRESSED = 'BUTTON-ALREADY-PRESSED'
 let usersData = {
 
     users: [],
-    pageSize: 3,
+    pageSize: 99,
     totalUsersCount: 1,
     currentPage: 2,
     isFetching: false,
@@ -95,9 +95,9 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(setFetching(false));
             dispatch(toUpdateUsers(data.items));
-            let num = data.totalCount / 180;
-            num = Math.ceil(num);
-            dispatch(setTotalUsersCount(num));
+            /*let num = data.totalCount / 180;
+            num = Math.ceil(num);*/
+            dispatch(setTotalUsersCount(data.totalCount));
         });
     }
 };

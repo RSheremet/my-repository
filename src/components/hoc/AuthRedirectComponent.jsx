@@ -12,3 +12,15 @@ export const AuthRedirectComponent = (Component) => {
     return RedirectComponent
 
 };
+
+/*
+export const AuthRedirectDone = (Component) => {
+
+    const RedirectComponent = (props) => {
+        if (props.isAuth) return <Redirect to={'/profile/:userID'} />;
+
+        return <Component {...props} />
+    };
+
+    return RedirectComponent
+}*/

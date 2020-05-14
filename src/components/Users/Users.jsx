@@ -6,8 +6,6 @@ import {NavLink, Redirect} from "react-router-dom";
 
 const Users = ( props ) =>  {
 
-    if (props.isAuth == false) return <Redirect to={'/login'} />;
-
         return (
             <div>
                 <div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Header.module.css';
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
 
@@ -9,9 +9,10 @@ const Header = (props) => {
         <div className={style.imgg}></div>
         <div className={style.login_block}>
             {props.isAuth ? <span>{props.login}</span> : <NavLink to={'/login'} className={style.login_word}>Login</NavLink>}
+            {props.isAuth ? <button onClick={props.toLogout}>Выйти</button> : ""}
         </div>
     </header>
     )
-}
+};
 
 export default Header;

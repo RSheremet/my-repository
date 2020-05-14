@@ -9,7 +9,7 @@ const Navigation = () => {
     return (
     <nav className={classes.nav}>
         <div className={menu}>
-            <NavLink to={"/profile/:userID"}>Profile</NavLink>
+            <NavLink to={"/profile/7398"}>Profile</NavLink>
         </div>
         <div className={menu}>
             <NavLink to={"/correspondense"}>Messages</NavLink>

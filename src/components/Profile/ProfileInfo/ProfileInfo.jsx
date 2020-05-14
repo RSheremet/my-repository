@@ -4,6 +4,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import lfj from "../../../images/looking_for_job.jpeg";
 import hw from "../../../images/im_working.jpg"
 import {Redirect} from "react-router-dom";
+import ProfileStatus from "./ProfileStatus";
 
 
 
@@ -15,8 +16,6 @@ const ProfileInfo = ( props ) => {
 
     let p = props.profile
 
-    let facebook
-
     return (
         <div>
             {/*<div>
@@ -27,9 +26,10 @@ const ProfileInfo = ( props ) => {
                     <img src={p.photos.large} />
                 </div>
                 <div className={style.your_profiles_wrapper}>
-                    <div className={style.your_status}>
-                        <span>{p.aboutMe}</span>
-                    </div>
+                    <ProfileStatus
+                        sendUsersStatusThunkCreator={props.sendUsersStatusThunkCreator}
+                        status={props.status}
+                    />
                     <div className={style.full_name}>
                         <span>Ваше имя:</span>
                         <span>{p.fullName ? p.fullName : "Не указано"}</span>
@@ -79,6 +79,6 @@ const ProfileInfo = ( props ) => {
             </div>
         </div>
     )
-}
+};
 
 export default ProfileInfo;
