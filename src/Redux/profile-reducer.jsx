@@ -72,7 +72,7 @@ const  profileRD = (state = initialProfile, action) => {
             return state;
 
     }
-}
+};
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const addDynamicChangeCreator = (toHeal) => ({ type: DYNAMIC_CHANGE, toHeal });

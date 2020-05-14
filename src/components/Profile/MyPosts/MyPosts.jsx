@@ -2,13 +2,14 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from "./SinglePost/Post";
 import {Redirect} from "react-router-dom";
+import TextareaPost from "./PostForm/PostForm";
 
 
 
 
 const MyPosts = ( props ) => {
 
-    if (props.isAuth == false) return <Redirect to={'/login'} />;
+
 
     let postsElements = props.postsData.map( p => <Post posti={p.posti} key={p.id} IlikeIt={p.ILikeIt} />);
 
@@ -30,10 +31,11 @@ const MyPosts = ( props ) => {
             </div>
             {postsElements}
             <div>
-                <textarea
+                {/*<textarea
                     value={ props.valueDefault }
                     onChange={beenChanged}>
-                </textarea>
+                </textarea>*/}
+                <TextareaPost />
             </div>
             <button onClick={addPost}>Нажми на меня</button>
         </div>
