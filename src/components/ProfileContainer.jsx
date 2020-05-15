@@ -4,7 +4,7 @@ import MyPostsContainer from "./Profile/MyPosts/MyPostsContainer";
 import * as axios from "axios";
 import {connect} from "react-redux";
 import {
-    getUserProfileThunkCreator,
+    getUserProfileThunkCreatorr,
     getUsersStatusThunkCreator,
     sendUsersStatusThunkCreator,
     setUserProfile
@@ -19,7 +19,7 @@ import {compose} from "redux";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUserProfileThunkCreator( this.props.match.params.userID );
+        this.props.getUserProfileThunkCreatorr( this.props.match.params.userID );
         let userId = this.props.match.params.userID;
         this.props.getUsersStatusThunkCreator( userId );
         /*let useriD = this.props.match.params.userID; // П Р И М Е Р
@@ -55,7 +55,7 @@ const mapStateToProps = ( state ) => {
 
 
 export default compose(
-    connect(mapStateToProps, {getUserProfileThunkCreator, sendUsersStatusThunkCreator, getUsersStatusThunkCreator}),
+    connect(mapStateToProps, {getUserProfileThunkCreatorr, sendUsersStatusThunkCreator, getUsersStatusThunkCreator}),
     withRouter,
     AuthRedirectComponent
 )(ProfileContainer);

@@ -38,3 +38,7 @@ a {
 .toWriteMessageTextareaButton button {
     margin-top: 15px;
 }
+
+.correspondense a {
+    color: #fff;
+}

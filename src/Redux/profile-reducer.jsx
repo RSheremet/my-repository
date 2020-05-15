@@ -2,7 +2,6 @@ import React from "react";
 import {profileAPI, usersAPI} from "../components/API/API";
 const ADD_POST = 'ADD-POST';
 
-const DYNAMIC_CHANGE = 'DYNAMIC-CHANGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
 
@@ -16,10 +15,6 @@ let initialProfile = {
         singleProfile: null
     },
 
-    valdef: {
-        valueDefault: 'Так написано по дефолту'
-    },
-
     status: ''
 
 };
@@ -30,23 +25,10 @@ const  profileRD = (state = initialProfile, action) => {
     switch (action.type) {
 
         case ADD_POST:
-            let description = state.valdef.valueDefault;
             stateCopy = {
                 ...state,
                 profile: {
-                    posts: [...state.profile.posts, {id: 3, posti: description, ILikeIt: 2}]
-                },
-                valdef: {
-                    valueDefault: '' // изменение в хранилище для textarea
-                }
-            };
-            return stateCopy;
-
-        case DYNAMIC_CHANGE:
-            stateCopy = {
-                ...state,
-                valdef: {
-                    valueDefault: action.toHeal
+                    posts: [...state.profile.posts, {id: 3, posti: action.text.postForm, ILikeIt: 2}]
                 }
             };
             return stateCopy;
@@ -74,12 +56,11 @@ const  profileRD = (state = initialProfile, action) => {
     }
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const addDynamicChangeCreator = (toHeal) => ({ type: DYNAMIC_CHANGE, toHeal });
+export const addPostActionCreatorr = ( text ) => ({ type: ADD_POST, text });
 export const setUserProfile = (file) => ({ type: SET_USER_PROFILE, file });
 export const setUsersStatus = (status) => ({ type: SET_USER_STATUS, status });
 
-export const getUserProfileThunkCreator = ( userID ) => {
+export const getUserProfileThunkCreatorr = ( userID ) => {
     return (dispatch) => {
         usersAPI.getUserProfile( userID ).then(data => {
             dispatch(setUserProfile(data))

@@ -3,6 +3,7 @@ import classes from './MyPosts.module.css';
 import Post from "./SinglePost/Post";
 import {Redirect} from "react-router-dom";
 import TextareaPost from "./PostForm/PostForm";
+import {addDynamicChangeCreator, addPostActionCreator, addPostActionCreatorr} from "../../../Redux/profile-reducer";
 
 
 
@@ -35,9 +36,8 @@ const MyPosts = ( props ) => {
                     value={ props.valueDefault }
                     onChange={beenChanged}>
                 </textarea>*/}
-                <TextareaPost />
+                <TextareaPost addPostActionCreatorr={props.addPostActionCreatorr} />
             </div>
-            <button onClick={addPost}>Нажми на меня</button>
         </div>
     )
 }

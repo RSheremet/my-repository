@@ -16,44 +16,29 @@ let initialCorrespondense = {
             {id: 3, message: "yo"},
         ]
     },
-
-    correspondenseChange: {
-        changed: ''
-    },
-}
+};
 
 
 const correspondense = (state = initialCorrespondense, action) => {
 
-    let stateCopy
+    let stateCopy;
     switch (action.type) {
+
         case CORRESPONDENSE_STATIC_CHANGE:
-            let newMessage = state.correspondenseChange.changed  // сохранение текста из старого state
             stateCopy = {
                 ...state,
                 correspondence: {
                     conversationData: [...state.correspondence.conversationData],
-                    messagesData: [...state.correspondence.messagesData, {id: 5, message: newMessage}] // добавление текста из того, что находится в хранилище
-                },
-                correspondenseChange: {
-                    changed: '' // изменение в хранилище для textarea
+                    messagesData: [...state.correspondence.messagesData, {id: 5, message: action.message.dialogForm}] // добавление текста из того, что находится в хранилище
                 }
-            }
-            return stateCopy
-        case CORRESPONDENSE_DYNAMIC_CHANGE:
-            stateCopy = {
-                ...state,
-                correspondenseChange: {
-                    changed: action.toChange // изменение в хранилище для textarea
-                }
-            }
-            return stateCopy
+            };
+            return stateCopy;
+
         default:
             return state
     }
 }
 
-export const addCorrespondenseChangeCreator = (toChange) => ({ type: CORRESPONDENSE_DYNAMIC_CHANGE, toChange }) // сопоставление "пароля" для реализации кода
-export const addCorrespondenseClickCreator = () => ({ type: CORRESPONDENSE_STATIC_CHANGE }) // сопоставление "пароля" для реализации кода
+export const addCorrespondenseClickCreator = ( message ) => ({ type: CORRESPONDENSE_STATIC_CHANGE, message }) // сопоставление "пароля" для реализации кода
 
 export default correspondense
