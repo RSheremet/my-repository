@@ -8,7 +8,9 @@ import authRD, {toAuthUserDataThunkCreator} from "../../Redux/auth-reducer";
 const LoginContainer = (props) => {
 
     return (
-        <Login toAuthUserDataThunkCreator={props.toAuthUserDataThunkCreator}  />
+        <Login toAuthUserDataThunkCreator={props.toAuthUserDataThunkCreator}
+               isAuth={props.isAuth}
+        />
     )
 
 };

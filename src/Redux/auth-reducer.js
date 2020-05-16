@@ -1,5 +1,6 @@
 import React from "react";
 import {authAPI, usersAPI} from "../components/API/API";
+import {stopSubmit} from "redux-form"
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const LOGOUT_USER_DATA = 'LOGOUT-USER-DATA';
@@ -39,7 +40,6 @@ const  authRD = (state = usersData, action) => {
 
         default:
             return state;
-
     }
 };
 
@@ -47,16 +47,17 @@ const  authRD = (state = usersData, action) => {
 export const setAuthUserData = ( userId, login, email ) => ({ type: SET_USER_DATA, data: {userId, login, email} });
 export const setLogouthUserData = () => ({ type: LOGOUT_USER_DATA });
 
-export const setAuthUserDataThunkCreator = () => {
+export const setAuthUserDataThunkCreator = () => (dispatch) => {
 
-    return (dispatch) => {
+
         usersAPI.toLogin().then(data => {
             if (data.email) {
                 let {id, login, email} = data;
                 dispatch(setAuthUserData(id, login, email));
             }
-        })
-    }
+        });
+
+    return "It Incubator"
 };
 
 export const toAuthUserDataThunkCreator = ( userFormData ) => {
@@ -72,13 +73,14 @@ export const toAuthUserDataThunkCreator = ( userFormData ) => {
                             dispatch(setAuthUserData(id, login, email));
                         }
                     })
-                }
+                } else {
+                let action = stopSubmit('login', {_error: "Введены не верные данные"}); // если введены не правильные данные то выведет ошибку
+                dispatch(action);
+            }
+        })
+     }
+}
 
-            })
-
-        }
-
-};
 
 export const toLogout = () => {
 

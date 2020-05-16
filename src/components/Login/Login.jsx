@@ -2,8 +2,14 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../Common/FormControl/Textarea";
 import {fieldRequired, maxLengthCreator} from "../validation/Validation";
+import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import style from '../Common/FormControl/Textarea.module.css'
 
-const maxLength20 = maxLengthCreator(20);
+const maxLength20 = maxLengthCreator(30);
+
+
 
 const LoginForm = (props) => {
 
@@ -22,6 +28,11 @@ const LoginForm = (props) => {
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember me
             </div>
+            { props.error &&
+            <div className={style.form_summary_error}>
+                {props.error}
+            </div>
+             }
             <div>
                 <button>Log in</button>
             </div>
@@ -39,6 +50,10 @@ const Login = (props) => {
         props.toAuthUserDataThunkCreator(formdata)
     };
 
+    if (props.isAuth) {
+        return <Redirect to={"/profile/:userID"} />
+    }
+
 
     return (
         <div>
@@ -47,5 +62,6 @@ const Login = (props) => {
         </div>
     )
 };
+
 
 export default Login
