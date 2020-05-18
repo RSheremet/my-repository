@@ -15,7 +15,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import appRD, {setInitializedThunkCreator} from "./Redux/app-reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
-import {getUserProfileThunkCreatorr} from "./Redux/profile-reducer";
+
 
 
 
@@ -24,17 +24,13 @@ class App extends React.Component {
 
     componentDidMount() {
         this.props.setInitializedThunkCreator()
-        this.props.getUserProfileThunkCreatorr( this.props.match.params.userID )
-        /*axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true}).then(response => { // П Р И М Е Р
-            let { id, login, email} = response.data.data; // П Р И М Е Р
-            this.props.setAuthUserData(id, login, email); // П Р И М Е Р
-        });*/ // П Р И М Е Р
     }
 
     render() {
 
-        if (!this.props.setInitializedThunkCreator)
-        { return <Preloader />}
+        if (!this.props.isInitialized) {
+            return <Preloader />
+        }
 
         return (
 
@@ -107,11 +103,11 @@ class App extends React.Component {
 
 let mapStateToProps = ( state ) => {
     return {
-        setInitializedThunkCreator: state.appRD.setInitializedThunkCreator
+        isInitialized: state.appRD.isInitialized
     }
 };
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, {setInitializedThunkCreator, getUserProfileThunkCreatorr})
+    connect(mapStateToProps, {setInitializedThunkCreator})
 )(App);

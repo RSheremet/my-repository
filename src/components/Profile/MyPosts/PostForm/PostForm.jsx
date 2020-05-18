@@ -8,7 +8,7 @@ import style from '../MyPosts.module.css';
 const maxLength20 = maxLengthCreator(20);
 
 const PostForm = (props) => {
-
+    debugger
     return (
         <form onSubmit={props.handleSubmit}>
             <Field placeholder={'Введите Ваш текст'}
@@ -26,7 +26,6 @@ const PostReduxForm = reduxForm({form: 'post'})(PostForm);
 const TextareaPost = (props) => {
 
     const onSubmit = (formdata) => {
-        debugger
         props.addPostActionCreatorr(formdata)
     };
 

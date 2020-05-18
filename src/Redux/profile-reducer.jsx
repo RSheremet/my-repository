@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialProfile = {
 
@@ -50,6 +51,15 @@ const  profileRD = (state = initialProfile, action) => {
             };
             return stateCopy;
 
+        case DELETE_POST:
+            stateCopy = {
+                ...state,
+                profile: {
+                    posts: [...state.profile.posts.filter( p => p.id !== action.postId )]
+                }
+            };
+            return stateCopy;
+
         default:
             return state;
 
@@ -59,6 +69,7 @@ const  profileRD = (state = initialProfile, action) => {
 export const addPostActionCreatorr = ( text ) => ({ type: ADD_POST, text });
 export const setUserProfile = (file) => ({ type: SET_USER_PROFILE, file });
 export const setUsersStatus = (status) => ({ type: SET_USER_STATUS, status });
+export const deletePostActionCreatorr = ( postId ) => ({ type: DELETE_POST, postId });
 
 export const getUserProfileThunkCreatorr = ( userID ) => {
     return (dispatch) => {

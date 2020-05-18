@@ -7,10 +7,13 @@ import reduceUsers, {
 } from "../../Redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
-import CorrespondenseContainer from "../Correspondense/CorrespondenseContainer";
-import {AuthRedirectComponent} from "../hoc/AuthRedirectComponent";
 import {compose} from "redux";
+import {
+    getCurrentPage, getPageSize, getUsers, getUsersCount, getUsersSuperSelector,
+    getWhetherIsAuth,
+    getWhetherIsButtonPressed,
+    getWhetherIsFetching
+} from "../../Redux/users-selectors";
 
 
 
@@ -76,13 +79,13 @@ class UsersAPIComponent extends React.Component {
 
 let mapStateToProps = ( state ) => {
     return {
-        users: state.reduceUsers.users,
-        pageSize: state.reduceUsers.pageSize,
-        totalUsersCount: state.reduceUsers.totalUsersCount,
-        currentPage: state.reduceUsers.currentPage,
-        isFetching: state.reduceUsers.isFetching,
-        isButtonPressed: state.reduceUsers.isButtonPressed,
-        isAuth: state.authRD.isAuth
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getWhetherIsFetching(state),
+        isButtonPressed: getWhetherIsButtonPressed(state),
+        isAuth: getWhetherIsAuth(state)
     }
 };
 
@@ -123,6 +126,5 @@ const UsersContainer = connect( mapStateToProps, { // П Р И М Е Р
 export default compose(
     connect( mapStateToProps, {
         toUpdateUsers, changePage, setButtonPressed, getUsersThunkCreator,
-        newPageGetUsers, followThunkCreator, unFollowThunkCreator } ),
-    AuthRedirectComponent,
+        newPageGetUsers, followThunkCreator, unFollowThunkCreator } )
 )(UsersAPIComponent);

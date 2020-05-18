@@ -3,8 +3,7 @@ import style from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import lfj from "../../../images/looking_for_job.jpeg";
 import hw from "../../../images/im_working.jpg"
-import {Redirect} from "react-router-dom";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 
@@ -26,7 +25,7 @@ const ProfileInfo = ( props ) => {
                     <img src={p.photos.large} />
                 </div>
                 <div className={style.your_profiles_wrapper}>
-                    <ProfileStatus
+                    <ProfileStatusWithHooks
                         sendUsersStatusThunkCreator={props.sendUsersStatusThunkCreator}
                         status={props.status}
                     />

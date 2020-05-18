@@ -14,7 +14,7 @@ let usersData = {
     users: [],
     pageSize: 99,
     totalUsersCount: 1,
-    currentPage: 2,
+    currentPage: 1,
     isFetching: false,
     isButtonPressed: []
 
@@ -88,11 +88,12 @@ export const setTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUN
 export const setFetching = ( isFetching ) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const setButtonPressed = ( isTueFalse, userId  ) => ({ type: BUTTON_ALREADY_PRESSED, isTueFalse, userId });
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
+export const getUsersThunkCreator = (page, pageSize) => {
 
     return (dispatch) => {
         dispatch(setFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
+        dispatch(changePage(page))
+        usersAPI.getUsers(page, pageSize).then(data => {
             dispatch(setFetching(false));
             dispatch(toUpdateUsers(data.items));
             /*let num = data.totalCount / 180;

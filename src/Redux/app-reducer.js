@@ -14,6 +14,7 @@ const  appRD = (state = appData, action) => {
 
     let stateCopy;
     switch (action.type) {
+
         case INITIALIZED:
             stateCopy = {
                 ...state,
@@ -29,20 +30,21 @@ const  appRD = (state = appData, action) => {
 export const setInitializedSuccess = () => ({ type: INITIALIZED });
 
 export const setInitializedThunkCreator = () => (dispatch) => {
-    let promise = dispatch(setAuthUserDataThunkCreator());
 
-    Promise.all([promise])
-        .then(() => {
-            dispatch(setInitializedSuccess)
-        })
-    /*return (dispatch) => {
-        usersAPI.toLogin().then(data => {
-            if (data.email) {
-                let {id, login, email} = data;
-                dispatch(setAuthUserData(id, login, email));
-            }
-        })
-    }*/
+        let promise = dispatch(setAuthUserDataThunkCreator());
+
+        Promise.all([promise])
+            .then(() => {
+                dispatch(setInitializedSuccess())
+            })
+        /*return (dispatch) => {
+            usersAPI.toLogin().then(data => {
+                if (data.email) {
+                    let {id, login, email} = data;
+                    dispatch(setAuthUserData(id, login, email));
+                }
+            })
+        }*/
 };
 
 

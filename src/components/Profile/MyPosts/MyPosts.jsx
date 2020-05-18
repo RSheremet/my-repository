@@ -1,16 +1,15 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from "./SinglePost/Post";
-import {Redirect} from "react-router-dom";
 import TextareaPost from "./PostForm/PostForm";
-import {addDynamicChangeCreator, addPostActionCreator, addPostActionCreatorr} from "../../../Redux/profile-reducer";
+
 
 
 
 
 const MyPosts = ( props ) => {
 
-
+    console.log( props )
 
     let postsElements = props.postsData.map( p => <Post posti={p.posti} key={p.id} IlikeIt={p.ILikeIt} />);
 

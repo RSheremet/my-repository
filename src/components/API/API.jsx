@@ -53,7 +53,6 @@ export const profileAPI = {
         return (
             instance.get(`profile/` + userID)
                 .then(response => {
-                    debugger
                     return response.data
                 })
         )

@@ -23,8 +23,7 @@ const  authRD = (state = usersData, action) => {
         case SET_USER_DATA:
             stateCopy = {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.data
             };
             return stateCopy;
 
@@ -44,52 +43,44 @@ const  authRD = (state = usersData, action) => {
 };
 
 
-export const setAuthUserData = ( userId, login, email ) => ({ type: SET_USER_DATA, data: {userId, login, email} });
-export const setLogouthUserData = () => ({ type: LOGOUT_USER_DATA });
+export const setAuthUserData = ( userId, login, email, isAuth ) => ({ type: SET_USER_DATA, data: {userId, login, email, isAuth} });
+/*export const setLogouthUserData = () => ({ type: LOGOUT_USER_DATA });*/
 
 export const setAuthUserDataThunkCreator = () => (dispatch) => {
 
 
-        usersAPI.toLogin().then(data => {
+        return usersAPI.toLogin().then(data => {
             if (data.email) {
                 let {id, login, email} = data;
                 dispatch(setAuthUserData(id, login, email));
             }
         });
 
-    return "It Incubator"
 };
 
-export const toAuthUserDataThunkCreator = ( userFormData ) => {
+export const toAuthUserDataThunkCreator = ( userFormData ) => async (dispatch) => {
 
-    return (dispatch) => {
     let { email, password, rememberMe } = userFormData;
-        authAPI.authorization( email, password, rememberMe ).then(data => {
-            if (data.resultCode === 0) {
+    let data = await authAPI.authorization( email, password, rememberMe ); // ждем ответа на асинхронный запрос
+    if (data.resultCode === 0) {
 
-                    usersAPI.toLogin().then(data => {
-                        if (data.email) {
-                            let {id, login, email} = data;
-                            dispatch(setAuthUserData(id, login, email));
-                        }
-                    })
-                } else {
-                let action = stopSubmit('login', {_error: "Введены не верные данные"}); // если введены не правильные данные то выведет ошибку
-                dispatch(action);
-            }
-        })
-     }
+        data = await usersAPI.toLogin();
+
+        if (data.email) {
+            let {id, login, email} = data;
+            dispatch(setAuthUserData(id, login, email, true));
+        }
+    } else {
+        let action = stopSubmit('login', {_error: "Введены не верные данные"}); // если введены не правильные данные то выведет ошибку
+        dispatch(action);
+    }
 }
 
 
-export const toLogout = () => {
-
-    return (dispatch) => {
-        authAPI.deAuthorization().then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setLogouthUserData())
-            }
-        })
+export const toLogout = () => async (dispatch) => {
+    let data = authAPI.deAuthorization();
+    if (data.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false))
     }
 };
 

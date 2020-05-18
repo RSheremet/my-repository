@@ -3,15 +3,20 @@ import Login from "./Login";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import authRD, {toAuthUserDataThunkCreator} from "../../Redux/auth-reducer";
+import {withRouter} from "react-router-dom";
 
 
-const LoginContainer = (props) => {
+class LoginContainer extends React.Component {
 
-    return (
-        <Login toAuthUserDataThunkCreator={props.toAuthUserDataThunkCreator}
-               isAuth={props.isAuth}
-        />
-    )
+    render() {
+        return (
+            <Login toAuthUserDataThunkCreator={this.props.toAuthUserDataThunkCreator}
+                   isAuth={this.props.isAuth}
+            />
+        )
+    }
+
+
 
 };
 
@@ -23,4 +28,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect( mapStateToProps, {toAuthUserDataThunkCreator} ),
+    withRouter
 )(LoginContainer);
