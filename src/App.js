@@ -16,6 +16,10 @@ import {compose} from "redux";
 import appRD, {setInitializedThunkCreator} from "./Redux/app-reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 
+import store from './Redux/redux-store';
+import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+
 
 
 
@@ -107,7 +111,19 @@ let mapStateToProps = ( state ) => {
     }
 };
 
-export default compose(
+export const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {setInitializedThunkCreator})
 )(App);
+
+let SocialNetworkApp = (props) => {
+    return (
+        <BrowserRouter>
+            <Provider store={store} >
+                <AppContainer />
+            </Provider>
+        </BrowserRouter>
+    )
+};
+
+export default SocialNetworkApp;
