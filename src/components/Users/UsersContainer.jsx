@@ -3,13 +3,13 @@ import {connect} from "react-redux";
 import reduceUsers, {
     toUpdateUsers,
     changePage,
-    setButtonPressed, getUsersThunkCreator, newPageGetUsers, followThunkCreator, unFollowThunkCreator
+    setButtonPressed, getUsersThunkCreator, newPageGetUsers, followThunkCreator
 } from "../../Redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
 import {compose} from "redux";
 import {
-    getCurrentPage, getPageSize, getUsers, getUsersCount, getUsersSuperSelector,
+    getCurrentPage, getPageSize, getUsers, getUsersCount,
     getWhetherIsAuth,
     getWhetherIsButtonPressed,
     getWhetherIsFetching
@@ -58,7 +58,8 @@ class UsersAPIComponent extends React.Component {
 
         return (
             <>
-                { this.props.isFetching ? <Preloader /> : null }
+                { this.props.isFetching ? <Preloader /> : ""}
+
                 <Users
                     pages={pages}
                     onChangePage={this.onChangePage}
@@ -68,7 +69,6 @@ class UsersAPIComponent extends React.Component {
                     setButtonPressed={this.props.setButtonPressed}
                     isButtonPressed={this.props.isButtonPressed}
                     followThunkCreator={this.props.followThunkCreator}
-                    unFollowThunkCreator={this.props.unFollowThunkCreator}
                     isAuth={this.props.isAuth}
                 />
             </>
@@ -126,5 +126,5 @@ const UsersContainer = connect( mapStateToProps, { // П Р И М Е Р
 export default compose(
     connect( mapStateToProps, {
         toUpdateUsers, changePage, setButtonPressed, getUsersThunkCreator,
-        newPageGetUsers, followThunkCreator, unFollowThunkCreator } )
+        newPageGetUsers, followThunkCreator} )
 )(UsersAPIComponent);

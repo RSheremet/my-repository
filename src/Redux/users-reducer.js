@@ -1,7 +1,6 @@
 import React from "react";
-import {render} from "react-dom";
 import {usersAPI} from "../components/API/API";
-const FOLLOW = 'FOLLOW';
+const FOLLOW_UNFOLLOW = 'FOLLOW-UNFOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const CHANGE_PAGE = 'CHANGE-PAGE';
@@ -15,7 +14,7 @@ let usersData = {
     pageSize: 99,
     totalUsersCount: 1,
     currentPage: 1,
-    isFetching: false,
+    isFetching: true,
     isButtonPressed: []
 
 };
@@ -25,24 +24,12 @@ const  reduceUsers = (state = usersData, action) => {
     let stateCopy;
     switch (action.type) {
 
-        case FOLLOW:
+        case FOLLOW_UNFOLLOW:
             stateCopy = {
                 ...state,
                 users: state.users.map( u => {
                     if ( u.id === action.userId ) {
-                        return { ...u, followed: true };
-                    }
-                    return u;
-                })
-            };
-            return stateCopy;
-
-        case UNFOLLOW:
-            stateCopy = {
-                ...state,
-                users: state.users.map( u => {
-                    if ( u.id === action.uuserId ) {
-                        return { ...u, followed: false };
+                        return { ...u, followed: !u.followed };
                     }
                     return u;
                 })
@@ -80,64 +67,52 @@ const  reduceUsers = (state = usersData, action) => {
     }
 };
 
-export const toFollowSuccess = ( userId ) => ({ type: FOLLOW, userId });
-export const toUnFollow = ( uuserId ) => ({ type: UNFOLLOW, uuserId });
+export const toFollowUnfollow = ( userId ) => ({ type: FOLLOW_UNFOLLOW, userId });
 export const toUpdateUsers = ( users ) => ({ type: SET_USERS, users });
 export const changePage = ( pageId ) => ({ type: CHANGE_PAGE, pageId });
 export const setTotalUsersCount = ( number ) => ({ type: CHANGE_TOTAL_USERS_COUNT, number });
 export const setFetching = ( isFetching ) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const setButtonPressed = ( isTueFalse, userId  ) => ({ type: BUTTON_ALREADY_PRESSED, isTueFalse, userId });
 
-export const getUsersThunkCreator = (page, pageSize) => {
+export const getUsersThunkCreator = (page, pageSize) => async (dispatch) => {
 
-    return (dispatch) => {
-        dispatch(setFetching(true));
-        dispatch(changePage(page))
-        usersAPI.getUsers(page, pageSize).then(data => {
-            dispatch(setFetching(false));
-            dispatch(toUpdateUsers(data.items));
-            /*let num = data.totalCount / 180;
-            num = Math.ceil(num);*/
-            dispatch(setTotalUsersCount(data.totalCount));
-        });
-    }
-};
-
-export const newPageGetUsers = (pageNumber, pageSize) => {
-
-    return (dispatch) => {
-        dispatch(setFetching( true ));
-        dispatch(changePage(pageNumber));
-        usersAPI.getUsers(pageNumber, pageSize).then(data => {
-            dispatch(setFetching( false ));
-            dispatch(toUpdateUsers(data.items));
-        });
-    }
+    dispatch(setFetching(true));
+    dispatch(changePage(page));
+    let data = await usersAPI.getUsers(page, pageSize);
+    dispatch(setFetching(false));
+    dispatch(toUpdateUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
 
 };
 
-export const followThunkCreator = ( usersId ) => {
-    return (dispatch) => {
+export const newPageGetUsers = (pageNumber, pageSize) => async (dispatch) => {
+
+    dispatch(setFetching( true ));
+    dispatch(changePage(pageNumber));
+    let data = await usersAPI.getUsers(pageNumber, pageSize);
+    dispatch(setFetching( false ));
+    dispatch(toUpdateUsers(data.items));
+
+};
+
+export const followThunkCreator = ( usersId, isFollowed ) => async (dispatch) => {
+
+    if (isFollowed === true) {
         dispatch(setButtonPressed( true, usersId ));
-        usersAPI.toUnFollowRequest( usersId ).then(data => {
-            if (data.resultCode == 0) {
-                dispatch(toUnFollow(usersId));
-                dispatch(setButtonPressed( false, usersId ));
-            }
-        })
-    }
-};
-
-export const unFollowThunkCreator = ( usersId ) => {
-    return (dispatch) => {
+        let data = await usersAPI.toUnFollowRequest( usersId );
+        if (data.resultCode == 0) {
+            dispatch(toFollowUnfollow(usersId));
+            dispatch(setButtonPressed( false, usersId ));
+        }
+    } else if (isFollowed === false) {
         dispatch(setButtonPressed( true, usersId ));
-        usersAPI.toFollowRequest( usersId ).then(data => {
-            if (data.resultCode == 0) {
-                dispatch(toFollowSuccess(usersId));
-                dispatch(setButtonPressed( false, usersId ));
-            }
-        })
+        let data = await usersAPI.toFollowRequest( usersId );
+        if (data.resultCode == 0) {
+            dispatch(toFollowUnfollow(usersId));
+            dispatch(setButtonPressed(false, usersId));
+        }
     }
+
 };
 
 export default reduceUsers;

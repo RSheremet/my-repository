@@ -29,14 +29,14 @@ const  appRD = (state = appData, action) => {
 
 export const setInitializedSuccess = () => ({ type: INITIALIZED });
 
-export const setInitializedThunkCreator = () => (dispatch) => {
+export const setInitializedThunkCreator = () => async (dispatch) => {
 
         let promise = dispatch(setAuthUserDataThunkCreator());
 
-        Promise.all([promise])
-            .then(() => {
-                dispatch(setInitializedSuccess())
-            })
+        await Promise.all([promise])
+
+        dispatch(setInitializedSuccess())
+
         /*return (dispatch) => {
             usersAPI.toLogin().then(data => {
                 if (data.email) {

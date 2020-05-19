@@ -71,19 +71,12 @@ export const setUserProfile = (file) => ({ type: SET_USER_PROFILE, file });
 export const setUsersStatus = (status) => ({ type: SET_USER_STATUS, status });
 export const deletePostActionCreatorr = ( postId ) => ({ type: DELETE_POST, postId });
 
-export const getUserProfileThunkCreatorr = ( userID ) => {
-    return (dispatch) => {
-        usersAPI.getUserProfile( userID ).then(data => {
-            dispatch(setUserProfile(data))
-        })
-    }
-};
+export const getUserProfileThunkCreatorr = ( userID ) => async (dispatch) => {
 
-export const sendUsersStatusThunkCreator = ( status ) => {
-    return () => {
-        profileAPI.sendStatus( status )
-    }
-};
+    let data = await usersAPI.getUserProfile( userID );
+    dispatch(setUserProfile(data))
+
+};////////////////////////////////////////////////// СЛЕДУЮЩИЙ ЗАПРОС ИСПОЛЬЗУЕТ .then НО ПО СУТИ ОСТАЕТСЯ ТАКИМ ЖЕ/////////////////////////////////// П Р И М Е Р
 
 export const getUsersStatusThunkCreator = (userID) => {
     return (dispatch) => {
@@ -93,7 +86,10 @@ export const getUsersStatusThunkCreator = (userID) => {
     }
 };
 
-
-
+export const sendUsersStatusThunkCreator = ( status ) => {
+    return () => {
+        profileAPI.sendStatus( status )
+    }
+};
 
 export default profileRD;

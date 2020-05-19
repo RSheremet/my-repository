@@ -25,7 +25,7 @@ export const getCurrentPage = ( state ) => {
 }
 
 export const getWhetherIsFetching = ( state ) => {
-    return state.reduceUsers.currentPage
+    return state.reduceUsers.isFetching
 }
 
 export const getWhetherIsButtonPressed = ( state ) => {

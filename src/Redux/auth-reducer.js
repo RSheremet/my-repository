@@ -74,14 +74,14 @@ export const toAuthUserDataThunkCreator = ( userFormData ) => async (dispatch) =
         let action = stopSubmit('login', {_error: "Введены не верные данные"}); // если введены не правильные данные то выведет ошибку
         dispatch(action);
     }
-}
-
+};
 
 export const toLogout = () => async (dispatch) => {
-    let data = authAPI.deAuthorization();
-    if (data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false))
-    }
+    authAPI.deAuthorization().then(data => {
+        if (data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false))
+        }
+    })
 };
 
 

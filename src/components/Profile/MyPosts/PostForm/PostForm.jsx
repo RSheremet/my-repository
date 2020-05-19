@@ -2,18 +2,17 @@ import React from 'react';
 import {Field, reduxForm} from "redux-form";
 import {addDynamicChangeCreator, addPostActionCreator, addPostActionCreatorr} from "../../../../Redux/profile-reducer";
 import {fieldRequired, maxLengthCreator} from "../../../validation/Validation";
-import {Textarea} from "../../../Common/FormControl/Textarea";
+import {FormsSimplification} from "../../../Common/FormControl/FormsSimplification";
 import style from '../MyPosts.module.css';
 
 const maxLength20 = maxLengthCreator(20);
 
 const PostForm = (props) => {
-    debugger
     return (
         <form onSubmit={props.handleSubmit}>
             <Field placeholder={'Введите Ваш текст'}
                    name={'postForm'}
-                   component={Textarea}
+                   component={FormsSimplification}
                    validate={[fieldRequired, maxLength20]}
             />
             <button>Отправить</button>

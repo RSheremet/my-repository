@@ -1,33 +1,23 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../Common/FormControl/Textarea";
+
 import {fieldRequired, maxLengthCreator} from "../validation/Validation";
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
-import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import style from '../Common/FormControl/Textarea.module.css'
+import {FieldSimple, Input} from "../Common/FormControl/FormsSimplification";
 
 const maxLength20 = maxLengthCreator(30);
-
-
 
 const LoginForm = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field placeholder={'email'}
-                   name={'email'}
-                   component={Input}
-                   validate={[fieldRequired, maxLength20]}
-            />
-            <Field placeholder={'name'}
-                   name={'password'}
-                   component={Input}
-                   validate={[fieldRequired, maxLength20]}
-            />
-            <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember me
-            </div>
+            {FieldSimple('email', 'email', Input, fieldRequired, maxLength20)}
+            {FieldSimple('name', 'password', Input, fieldRequired, maxLength20)}
+            {FieldSimple("", "rememberMe", "input", fieldRequired, maxLength20, {type: "checkbox"}, "remember me")}
+            {/*<div>
+                <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember me //////////// П Р И М Е Р
+            </div>*/}
             { props.error &&
             <div className={style.form_summary_error}>
                 {props.error}
