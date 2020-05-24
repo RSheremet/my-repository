@@ -16,7 +16,7 @@ import Preloader from "./components/Common/Preloader/Preloader";
 import store from './Redux/redux-store';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import {LazyLoadHocComponent} from "./components/hoc/LazyLoadHoc";
+import {LazyLoadHocComponent} from "./components/hoc/LazyLoadHoc"
 
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer')); // Lazy-loaded
 const ProfileContainer = React.lazy(() => import('./components/ProfileContainer')); // Lazy-loadedss
