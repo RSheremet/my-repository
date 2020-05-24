@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './App.css';
 import Navigation from "./components/Navigation";
 import News from "./components/News/News";
@@ -7,18 +7,21 @@ import Settings from "./components/Settings/Settings";
 import FriendsList from "./components/FriendsList/FriendsList";
 import CorrespondenseContainer from "./components/Correspondense/CorrespondenseContainer";
 import {Route, withRouter} from "react-router-dom";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import appRD, {setInitializedThunkCreator} from "./Redux/app-reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
-
 import store from './Redux/redux-store';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
+import {LazyLoadHocComponent} from "./components/hoc/LazyLoadHoc";
+
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer')); // Lazy-loaded
+const ProfileContainer = React.lazy(() => import('./components/ProfileContainer')); // Lazy-loaded
+
+
 
 
 
@@ -54,19 +57,11 @@ class App extends React.Component {
                            }
                     />
                     <Route path='/profile/:userID?'
-                           render={ () =>
-                               <ProfileContainer
-                                   // store={ this.props.store }
-                               />
-                           }
-                    />
+                           render={ LazyLoadHocComponent(ProfileContainer) }/>
+
                     <Route path='/users'
-                           render={ () =>
-                               <UsersContainer
-                                   store={ this.props.store }
-                               />
-                           }
-                    />
+                           render={ LazyLoadHocComponent(UsersContainer) }/>
+
                     <Route path='/login'
                            render={ () => <LoginContainer
                                store={ this.props.store }
