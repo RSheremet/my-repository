@@ -14,7 +14,7 @@ import {compose} from "redux";
 import appRD, {setInitializedThunkCreator} from "./Redux/app-reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from './Redux/redux-store';
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {LazyLoadHocComponent} from "./components/hoc/LazyLoadHoc";
 
@@ -113,11 +113,11 @@ export const AppContainer = compose(
 
 let SocialNetworkApp = (props) => {
     return (
-        <BrowserRouter>
-            <Provider store={store} >
+        <HashRouter basename={process.env.PUBLIC_URL}> /*// возьми URL из окружения env(environment.) что значит */
+            <Provider store={store} > /* process - глобальный объект как window*/
                 <AppContainer />
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 };
 
