@@ -5,5 +5,5 @@ export const fieldRequired = value => {
 
 export const maxLengthCreator = (maxLength) => (value) => {
     if (value.length > maxLength) return `maximum size is ${maxLength} symbols`;
-    return undefined;fdsdfsdffdsadsfsadfsadfsadfsadfasdfsdf
+    return undefined;
 };
