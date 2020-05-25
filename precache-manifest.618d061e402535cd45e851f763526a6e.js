@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "280e5070d026babab05646b0e8f4633e",
+    "revision": "17a45a8010eded06d89e8007b2f43adc",
     "url": "/RSheremet/social-network/index.html"
   },
   {
-    "revision": "57ade438e0928d8ad0f8",
-    "url": "/RSheremet/social-network/static/css/3.03b90496.chunk.css"
+    "revision": "777fc71808649fae359d",
+    "url": "/RSheremet/social-network/static/css/3.81622b39.chunk.css"
   },
   {
-    "revision": "d5d4828c67c1fa0d6f87",
-    "url": "/RSheremet/social-network/static/css/4.41406ed6.chunk.css"
+    "revision": "57a8b01c7f168ddc2f27",
+    "url": "/RSheremet/social-network/static/css/4.f054c0af.chunk.css"
   },
   {
-    "revision": "f3c8817e0fda148b0d88",
-    "url": "/RSheremet/social-network/static/css/main.f8a099e5.chunk.css"
+    "revision": "c9265f453675278a5e31",
+    "url": "/RSheremet/social-network/static/css/main.f8b48be3.chunk.css"
   },
   {
     "revision": "a4edd22a7fa0cb5d59c1",
@@ -24,20 +24,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/RSheremet/social-network/static/js/2.ed137468.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "57ade438e0928d8ad0f8",
-    "url": "/RSheremet/social-network/static/js/3.7b8b659d.chunk.js"
+    "revision": "777fc71808649fae359d",
+    "url": "/RSheremet/social-network/static/js/3.2a569abe.chunk.js"
   },
   {
-    "revision": "d5d4828c67c1fa0d6f87",
-    "url": "/RSheremet/social-network/static/js/4.07c1c021.chunk.js"
+    "revision": "57a8b01c7f168ddc2f27",
+    "url": "/RSheremet/social-network/static/js/4.6dcc4e41.chunk.js"
   },
   {
-    "revision": "f3c8817e0fda148b0d88",
-    "url": "/RSheremet/social-network/static/js/main.f9afcb7e.chunk.js"
+    "revision": "c9265f453675278a5e31",
+    "url": "/RSheremet/social-network/static/js/main.ec408f7f.chunk.js"
   },
   {
-    "revision": "7142ccda2ef18819cfa1",
-    "url": "/RSheremet/social-network/static/js/runtime-main.e248f9b9.js"
+    "revision": "998e876d2885400a436d",
+    "url": "/RSheremet/social-network/static/js/runtime-main.cdddb2d6.js"
   },
   {
     "revision": "5c7aaf2da54d4ade8c32a34e867f0b5e",

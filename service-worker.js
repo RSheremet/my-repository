@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/RSheremet/social-network/precache-manifest.00a121c7b125b20860962d491c5f1fbb.js"
+  "/RSheremet/social-network/precache-manifest.618d061e402535cd45e851f763526a6e.js"
 );
 
 self.addEventListener('message', (event) => {
