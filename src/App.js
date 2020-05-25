@@ -113,8 +113,8 @@ export const AppContainer = compose(
 
 let SocialNetworkApp = (props) => {
     return (
-        <HashRouter basename={process.env.PUBLIC_URL}> /*// возьми URL из окружения env(environment.) что значит */
-            <Provider store={store} > /* process - глобальный объект как window*/
+        <HashRouter basename={process.env.PUBLIC_URL}>
+            <Provider store={store} >
                 <AppContainer />
             </Provider>
         </HashRouter>

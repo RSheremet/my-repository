@@ -9,13 +9,13 @@ import {
 import {Redirect, withRouter} from "react-router-dom";
 import {AuthRedirectComponent} from "./hoc/AuthRedirectComponent";
 import {compose} from "redux";
-import {setAuthUserDataThunkCreator} from "../Redux/auth-reducer";
+import {setAuthUserDataThunkCreator, toChangePhoto} from "../Redux/auth-reducer";
 
 
 
 class ProfileContainer extends React.Component {
 
-    componentDidMount() {
+    toReloadComponent = () => {
         let userId = this.props.match.params.userID;
         if (userId === ":userID") {
             userId = this.props.userId
@@ -32,6 +32,17 @@ class ProfileContainer extends React.Component {
         });*/ // П Р И М Е Р
     }
 
+    componentDidMount() {
+        this.toReloadComponent()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userID !== prevProps.match.params.userID) // если меняется айдишник пользователя то следует обновить страницу в противном случае - нет
+        this.toReloadComponent()                                              // если старые айдишник равен новому (при переходе со страницы пользователей в профайл) то следует обновить
+    }
+
+    someId = this.props.match.params.userID;
+
     render() {
         return (
             <div>
@@ -39,6 +50,9 @@ class ProfileContainer extends React.Component {
                              profile={this.props.profile}
                              status={this.props.status}
                              sendUsersStatusThunkCreator={this.props.sendUsersStatusThunkCreator}
+                             someId={this.someId}
+                             userId={this.props.userId}
+                             toChangePhoto={this.props.toChangePhoto}
                 />
                 <MyPostsContainer store={ this.props.store } />
             </div>
@@ -61,7 +75,7 @@ const mapStateToProps = ( state ) => {
 
 export default compose(
     connect(mapStateToProps, {getUserProfileThunkCreatorr, getUsersStatusThunkCreator, setAuthUserDataThunkCreator,
-        sendUsersStatusThunkCreator}),
+        sendUsersStatusThunkCreator, toChangePhoto}),
     withRouter,
     AuthRedirectComponent
 )(ProfileContainer);

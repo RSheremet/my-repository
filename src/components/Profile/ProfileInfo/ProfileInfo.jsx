@@ -4,6 +4,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import lfj from "../../../images/looking_for_job.jpeg";
 import hw from "../../../images/im_working.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import Photo from "../../../images/no-photo.jpg"
 
 
 
@@ -13,7 +14,21 @@ const ProfileInfo = ( props ) => {
         return <Preloader/>
     }
 
-    let p = props.profile
+    let p = props.profile;
+
+    let photos = p.photos.large ? <img src={p.photos.large} /> : <img src={Photo} />;
+
+    let changePhoto = (e) => {
+        if (e.target.files[0])
+        props.toChangePhoto(e.target.files[0])
+    };
+
+
+    let profilePhotoChanger;
+    let someId = Number(props.someId)
+    if (someId === props.userId) {
+        profilePhotoChanger = <input name="myFile" type="file" onChange={changePhoto} />
+    }
 
     return (
         <div>
@@ -22,7 +37,8 @@ const ProfileInfo = ( props ) => {
         </div>*/}
             <div className={style.wrapper}>
                 <div className={style.place_for_photo}>
-                    <img src={p.photos.large} />
+                    { photos }
+                    { profilePhotoChanger }
                 </div>
                 <div className={style.your_profiles_wrapper}>
                     <ProfileStatusWithHooks

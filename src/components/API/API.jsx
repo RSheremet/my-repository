@@ -69,6 +69,18 @@ export const profileAPI = {
                     return response.data
                 })
         )
+    },
+    sendPhoto( photoToSend ) {
+        return (
+            instance.put('/profile/photo', photoToSend, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => {
+                    return response.data
+                })
+        )
     }
 };
 

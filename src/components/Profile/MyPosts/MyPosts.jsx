@@ -9,8 +9,6 @@ import TextareaPost from "./PostForm/PostForm";
 
 const MyPosts = ( props ) => {
 
-    console.log( props )
-
     let postsElements = props.postsData.map( p => <Post posti={p.posti} key={p.id} IlikeIt={p.ILikeIt} />);
 
 

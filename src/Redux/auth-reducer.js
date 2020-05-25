@@ -1,9 +1,11 @@
 import React from "react";
-import {authAPI, usersAPI} from "../components/API/API";
+import {authAPI, profileAPI, usersAPI} from "../components/API/API";
 import {stopSubmit} from "redux-form"
+import {setUsersStatus} from "./profile-reducer";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const LOGOUT_USER_DATA = 'LOGOUT-USER-DATA';
+const SET_USER_PHOTO = 'SET-USER-PHOTO';
 
 
 let usersData = {
@@ -12,7 +14,8 @@ let usersData = {
     email: null,
     login: null,
 
-    isAuth: false
+    isAuth: false,
+    profilePhoto: ''
 
 };
 
@@ -37,6 +40,14 @@ const  authRD = (state = usersData, action) => {
             };
             return stateCopy;
 
+        case SET_USER_PHOTO:
+            debugger
+            stateCopy = {
+                ...state,
+                profilePhoto: action.photo
+            };
+            return stateCopy;
+
         default:
             return state;
     }
@@ -44,7 +55,9 @@ const  authRD = (state = usersData, action) => {
 
 
 export const setAuthUserData = ( userId, login, email, isAuth ) => ({ type: SET_USER_DATA, data: {userId, login, email, isAuth} });
-/*export const setLogouthUserData = () => ({ type: LOGOUT_USER_DATA });*/
+export const setAuthUserPhoto = ( photo ) => ({ type: SET_USER_PHOTO, photo });
+
+
 
 export const setAuthUserDataThunkCreator = () => (dispatch) => {
 
@@ -52,7 +65,7 @@ export const setAuthUserDataThunkCreator = () => (dispatch) => {
         return usersAPI.toLogin().then(data => {
             if (data.email) {
                 let {id, login, email} = data;
-                dispatch(setAuthUserData(id, login, email));
+                dispatch(setAuthUserData(id, login, email, true));
             }
         });
 
@@ -84,5 +97,19 @@ export const toLogout = () => async (dispatch) => {
     })
 };
 
+export const toChangePhoto = ( photo ) => {
+
+    let photoToSend = new FormData(); // когда мы отправляем файл на сервер - нужно делать это используя
+    photoToSend.append('image', photo); // специальную разметку "multipart/FormData" - для этого необ
+                                                // ходимо создать специальный объект как сделано это здесь
+                                            // и поместить в него название файла и сам файл "Formdata(название, файл)"
+    return (dispatch) => {
+        profileAPI.sendPhoto(photoToSend).then(data => { // отправляем в API, где файл уже будет отправлен на сервер
+            debugger
+            dispatch(setAuthUserPhoto(data.data.photos.large))
+        })
+    }
+
+};
 
 export default authRD;
