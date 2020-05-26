@@ -9,7 +9,7 @@ import {
 import {Redirect, withRouter} from "react-router-dom";
 import {AuthRedirectComponent} from "./hoc/AuthRedirectComponent";
 import {compose} from "redux";
-import {setAuthUserDataThunkCreator, toChangePhoto} from "../Redux/auth-reducer";
+import {setAuthUserDataThunkCreator, toChangePhoto, toCheckInitializationForProfile} from "../Redux/auth-reducer";
 
 
 
@@ -18,13 +18,16 @@ class ProfileContainer extends React.Component {
     toReloadComponent = () => {
         let userId = this.props.match.params.userID;
         if (userId === ":userID") {
-            userId = this.props.userId
+            userId = this.props.userId;
             if (!userId) {
                 this.props.history.push("/login")
             }
         }
-        this.props.getUserProfileThunkCreatorr( userId );
-        this.props.getUsersStatusThunkCreator( userId )
+
+
+        this.props.toCheckInitializationForProfile( userId );
+        this.props.getUsersStatusThunkCreator( userId );
+
 
         /*let useriD = this.props.match.params.userID; // П Р И М Е Р
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + useriD).then(response => { // П Р И М Е Р
@@ -43,7 +46,10 @@ class ProfileContainer extends React.Component {
 
     someId = this.props.match.params.userID;
 
+
+
     render() {
+
         return (
             <div>
                 <ProfileInfo { ...this.props }
@@ -53,6 +59,7 @@ class ProfileContainer extends React.Component {
                              someId={this.someId}
                              userId={this.props.userId}
                              toChangePhoto={this.props.toChangePhoto}
+                             isInitialized={this.props.isInitialized}
                 />
                 <MyPostsContainer store={ this.props.store } />
             </div>
@@ -67,7 +74,8 @@ const mapStateToProps = ( state ) => {
         profile: state.profileRD.profile.singleProfile,
         isAuth: state.authRD.isAuth,
         status: state.profileRD.status,
-        userId: state.authRD.userId
+        userId: state.authRD.userId,
+        isInitialized: state.authRD.isInitialized
     }
 };
 
@@ -75,7 +83,7 @@ const mapStateToProps = ( state ) => {
 
 export default compose(
     connect(mapStateToProps, {getUserProfileThunkCreatorr, getUsersStatusThunkCreator, setAuthUserDataThunkCreator,
-        sendUsersStatusThunkCreator, toChangePhoto}),
+        sendUsersStatusThunkCreator, toChangePhoto, toCheckInitializationForProfile}),
     withRouter,
     AuthRedirectComponent
 )(ProfileContainer);

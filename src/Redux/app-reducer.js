@@ -31,11 +31,14 @@ export const setInitializedSuccess = () => ({ type: INITIALIZED });
 
 export const setInitializedThunkCreator = () => async (dispatch) => {
 
+
+
         let promise = dispatch(setAuthUserDataThunkCreator());
 
         await Promise.all([promise])
 
         dispatch(setInitializedSuccess())
+
 
         /*return (dispatch) => {
             usersAPI.toLogin().then(data => {

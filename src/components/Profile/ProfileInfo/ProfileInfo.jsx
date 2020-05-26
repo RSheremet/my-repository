@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import lfj from "../../../images/looking_for_job.jpeg";
@@ -10,12 +10,23 @@ import Photo from "../../../images/no-photo.jpg"
 
 const ProfileInfo = ( props ) => {
 
-    if (!props.profile) {
-        return <Preloader/>
+    let myPhoto = props.profile ? props.profile.singleProfile.photos.large : Photo;
+    /*let [photo, useEffectChangePhoto] = useState(myPhoto);*/
+
+    if ( !props.isInitialized ) {
+        return <Preloader />
     }
 
-    let p = props.profile;
 
+    if (props.profile) {
+        /*useEffect( () => {
+            useEffectChangePhoto(props.profile.photos.large);
+        }, [props.profile]);*/
+    }
+
+
+    let p = props.profile;
+    debugger
     let photos = p.photos.large ? <img src={p.photos.large} /> : <img src={Photo} />;
 
     let changePhoto = (e) => {

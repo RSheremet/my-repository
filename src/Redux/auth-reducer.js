@@ -1,11 +1,12 @@
 import React from "react";
 import {authAPI, profileAPI, usersAPI} from "../components/API/API";
 import {stopSubmit} from "redux-form"
-import {setUsersStatus} from "./profile-reducer";
+import {getUserProfileThunkCreatorr, setUsersStatus} from "./profile-reducer";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const LOGOUT_USER_DATA = 'LOGOUT-USER-DATA';
 const SET_USER_PHOTO = 'SET-USER-PHOTO';
+const IS_INITIALIZED = 'IS-INITIALIZED';
 
 
 let usersData = {
@@ -15,7 +16,7 @@ let usersData = {
     login: null,
 
     isAuth: false,
-    profilePhoto: ''
+    isInitialized: false
 
 };
 
@@ -41,10 +42,16 @@ const  authRD = (state = usersData, action) => {
             return stateCopy;
 
         case SET_USER_PHOTO:
-            debugger
             stateCopy = {
                 ...state,
                 profilePhoto: action.photo
+            };
+            return stateCopy;
+
+        case IS_INITIALIZED:
+            stateCopy = {
+                ...state,
+                isInitialized: true
             };
             return stateCopy;
 
@@ -56,6 +63,7 @@ const  authRD = (state = usersData, action) => {
 
 export const setAuthUserData = ( userId, login, email, isAuth ) => ({ type: SET_USER_DATA, data: {userId, login, email, isAuth} });
 export const setAuthUserPhoto = ( photo ) => ({ type: SET_USER_PHOTO, photo });
+export const initializedSuccess = () => ({ type: IS_INITIALIZED });
 
 
 
@@ -109,6 +117,15 @@ export const toChangePhoto = ( photo ) => {
             dispatch(setAuthUserPhoto(data.data.photos.large))
         })
     }
+
+};
+
+export const toCheckInitializationForProfile = ( userId ) => async (dispatch) => {
+
+    let promise = dispatch(getUserProfileThunkCreatorr(userId));
+    await Promise.all([promise]);
+    dispatch(initializedSuccess());
+
 
 };
 
