@@ -5,7 +5,6 @@ import {getUserProfileThunkCreatorr, setUsersStatus} from "./profile-reducer";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const LOGOUT_USER_DATA = 'LOGOUT-USER-DATA';
-const SET_USER_PHOTO = 'SET-USER-PHOTO';
 const IS_INITIALIZED = 'IS-INITIALIZED';
 
 
@@ -41,13 +40,6 @@ const  authRD = (state = usersData, action) => {
             };
             return stateCopy;
 
-        case SET_USER_PHOTO:
-            stateCopy = {
-                ...state,
-                profilePhoto: action.photo
-            };
-            return stateCopy;
-
         case IS_INITIALIZED:
             stateCopy = {
                 ...state,
@@ -62,7 +54,6 @@ const  authRD = (state = usersData, action) => {
 
 
 export const setAuthUserData = ( userId, login, email, isAuth ) => ({ type: SET_USER_DATA, data: {userId, login, email, isAuth} });
-export const setAuthUserPhoto = ( photo ) => ({ type: SET_USER_PHOTO, photo });
 export const initializedSuccess = () => ({ type: IS_INITIALIZED });
 
 
@@ -103,21 +94,6 @@ export const toLogout = () => async (dispatch) => {
             dispatch(setAuthUserData(null, null, null, false))
         }
     })
-};
-
-export const toChangePhoto = ( photo ) => {
-
-    let photoToSend = new FormData(); // когда мы отправляем файл на сервер - нужно делать это используя
-    photoToSend.append('image', photo); // специальную разметку "multipart/FormData" - для этого необ
-                                                // ходимо создать специальный объект как сделано это здесь
-                                            // и поместить в него название файла и сам файл "Formdata(название, файл)"
-    return (dispatch) => {
-        profileAPI.sendPhoto(photoToSend).then(data => { // отправляем в API, где файл уже будет отправлен на сервер
-            debugger
-            dispatch(setAuthUserPhoto(data.data.photos.large))
-        })
-    }
-
 };
 
 export const toCheckInitializationForProfile = ( userId ) => async (dispatch) => {

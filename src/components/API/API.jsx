@@ -53,7 +53,6 @@ export const profileAPI = {
         return (
             instance.get(`profile/` + userID)
                 .then(response => {
-                    debugger
                     return response.data
                 })
         )
@@ -73,12 +72,13 @@ export const profileAPI = {
     },
     sendPhoto( photoToSend ) {
         return (
-            instance.put('/profile/photo', photoToSend, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            instance.put('/profile/photo', photoToSend, { // существует несколько форматов отправки файлов
+                headers: {                              // для отправки картинки или иного не txt файла используется формат 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data' // для того что бы отправить в этом формате необходимо создать объект FormData при помощи
+                }                                       // следующего кода formData = new FormData(название, файл) - внутри скобочек указываем 1. Название файла который мы отправляем 2. Вкладываем сам файл
             })
                 .then(response => {
+                    debugger
                     return response.data
                 })
         )

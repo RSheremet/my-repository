@@ -10,27 +10,18 @@ import Photo from "../../../images/no-photo.jpg"
 
 const ProfileInfo = ( props ) => {
 
-    let myPhoto = props.profile ? props.profile.singleProfile.photos.large : Photo;
-    /*let [photo, useEffectChangePhoto] = useState(myPhoto);*/
 
-    if ( !props.isInitialized ) {
-        return <Preloader />
-    }
+    let [photo, setUseEffectChangePhoto] = useState(props.profile.photos.large);
 
-
-    if (props.profile) {
-        /*useEffect( () => {
-            useEffectChangePhoto(props.profile.photos.large);
-        }, [props.profile]);*/
-    }
-
+    useEffect( () => {
+        setUseEffectChangePhoto(props.profile.photos.large);
+    }, [props.profile.photos.large]);
 
     let p = props.profile;
-    debugger
-    let photos = p.photos.large ? <img src={p.photos.large} /> : <img src={Photo} />;
+    let photos = <img src={photo} />
 
     let changePhoto = (e) => {
-        if (e.target.files[0])
+    if (e.target.files[0])
         props.toChangePhoto(e.target.files[0])
     };
 
@@ -47,7 +38,8 @@ const ProfileInfo = ( props ) => {
             <img src='https://static8.depositphotos.com/1370441/848/i/450/depositphotos_8486144-stock-photo-beach-and-tropical-sea.jpg' />
         </div>*/}
             <div className={style.wrapper}>
-                <div className={style.place_for_photo}>
+                <div>{ photo }</div>
+                <div className={style.place_for_photo} >
                     { photos }
                     { profilePhotoChanger }
                 </div>
