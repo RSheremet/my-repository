@@ -3,7 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {addDynamicChangeCreator, addPostActionCreator, addPostActionCreatorr} from "../../../../Redux/profile-reducer";
 import {fieldRequired, maxLengthCreator} from "../../../validation/Validation";
 import {FormsSimplification} from "../../../Common/FormControl/FormsSimplification";
-import style from '../MyPosts.module.css';
+import style from '../../../../App.module.css';
 
 const maxLength20 = maxLengthCreator(20);
 

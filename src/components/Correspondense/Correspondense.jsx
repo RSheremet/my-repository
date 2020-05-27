@@ -1,9 +1,8 @@
 import React from 'react';
-import style from './Correspondense.module.css';
+import style from '../../App.module.css';
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
 import TextareaDialog from "./DialogTextareaForm/DialogTextareaForm";
-import {addCorrespondenseClickCreator} from "../../Redux/correspondense-reducer";
 
 const Correspondense = (props) => {
 

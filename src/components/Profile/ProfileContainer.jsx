@@ -1,16 +1,16 @@
 import React from 'react';
-import ProfileInfo from "./Profile/ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./Profile/MyPosts/MyPostsContainer";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {connect} from "react-redux";
 import {
     getUserProfileThunkCreatorr,
     getUsersStatusThunkCreator, sendUsersStatusThunkCreator, toChangePhoto
-} from "../Redux/profile-reducer";
+} from "../../Redux/profile-reducer";
 import {withRouter} from "react-router-dom";
-import {AuthRedirectComponent} from "./hoc/AuthRedirectComponent";
+import {AuthRedirectComponent} from "../hoc/AuthRedirectComponent";
 import {compose} from "redux";
-import {setAuthUserDataThunkCreator, toCheckInitializationForProfile} from "../Redux/auth-reducer";
-import Preloader from "./Common/Preloader/Preloader";
+import {setAuthUserDataThunkCreator, toCheckInitializationForProfile} from "../../Redux/auth-reducer";
+import Preloader from "../Common/Preloader/Preloader";
 
 
 

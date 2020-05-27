@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './MyPosts.module.css';
+import classes from '../../../App.module.css';
 import Post from "./SinglePost/Post";
 import TextareaPost from "./PostForm/PostForm";
 

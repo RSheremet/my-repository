@@ -1,21 +1,13 @@
 import React from 'react';
-import classes from './Navigation.module.css';
-import {NavLink, withRouter} from "react-router-dom";
-import {connect} from "react-redux";
+import classes from '../../App.module.css';
+import {NavLink} from "react-router-dom";
 import {compose} from "redux";
-import {getUserProfileThunkCreatorr} from "../Redux/profile-reducer";
 
 
-let menu = `${classes.navMenu} ${classes.navActive}`;
+const NavigationWrapper = ( props ) => {
 
-class Navigation extends React.Component {
-
-    componentDidMount() {
-        this.props.getUserProfileThunkCreatorr(this.props.match.params.userID);
-    }
-
-    render() {
         return (
+
             <nav className={classes.nav}>
                 <div className={menu}>
                     <NavLink to={"/profile/7398"}>Profile</NavLink>
@@ -39,17 +31,10 @@ class Navigation extends React.Component {
                     <NavLink to="/friendsList">FriendsList</NavLink>
                 </div>
             </nav>
+
         )
-    }
-}
+};
 
-const mapStateToProps = ( state ) => {
-    return {
 
-    }
-}
 
-export default compose(
-    connect(mapStateToProps, {getUserProfileThunkCreatorr}),
-    withRouter
-)(Navigation);
+export default compose()(NavigationWrapper);

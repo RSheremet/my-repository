@@ -1,5 +1,5 @@
 import React from 'react';
-import c from './../Correspondense.module.css';
+import c from '../../../App.module.css';
 
 const Message = (props) => {
     return (

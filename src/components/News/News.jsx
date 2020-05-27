@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './News.module.css';
+import classes from '../../App.module.css';
 import {Redirect} from "react-router-dom";
 import authRD from "../../Redux/auth-reducer";
 

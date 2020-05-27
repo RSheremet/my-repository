@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Textarea.module.css";
+import style from "../../../App.module.css";
 import {Field} from "redux-form";
 
 export const ControlForm = ({input, meta, child, ...props}) => {

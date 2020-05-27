@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Settings.module.css';
+import classes from '../../App.module.css';
 import {Redirect} from "react-router-dom";
 
 const Music = (props) => {
