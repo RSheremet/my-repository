@@ -1,34 +1,51 @@
 import React from 'react';
 import classes from '../../App.module.css';
-import {NavLink, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {getUserProfileThunkCreatorr} from "../../Redux/profile-reducer";
-import Navigation from "./Navigation";
+import NavigationWrapper from "./NavigationWrapper";
+import {toCheckInitializationForProfile} from "../../Redux/auth-reducer";
+import {withRouter} from "react-router-dom";
 
 
 let menu = `${classes.navMenu} ${classes.navActive}`;
 
 class NavigationContainer extends React.Component {
 
+    toReloadComponent = () => {
+        let userId = this.props.match.params.userID;
+        this.props.toCheckInitializationForProfile( userId );
+
+    };
+
     componentDidMount() {
-        this.props.getUserProfileThunkCreatorr(this.props.match.params.userID);
+        this.toReloadComponent();
     }
 
+    componentDidUpdate() {
+        this.toReloadComponent();
+    }
+
+
+
     render() {
+
         return (
-            <Navigation />
+            <NavigationWrapper
+                profile={this.props.profile}
+                isInitialized={this.props.isInitialized}
+            />
         )
     }
 }
 
 const mapStateToProps = ( state ) => {
     return {
-
+        profile: state.profileRD.profile.singleProfile,
+        isInitialized: state.authRD.isInitialized
     }
 };
 
 export default compose(
-    connect(mapStateToProps, {getUserProfileThunkCreatorr}),
+    connect(mapStateToProps, {toCheckInitializationForProfile}),
     withRouter
 )(NavigationContainer);

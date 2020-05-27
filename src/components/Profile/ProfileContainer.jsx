@@ -34,7 +34,7 @@ class ProfileContainer extends React.Component {
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + useriD).then(response => { // П Р И М Е Р
             this.props.setUserProfile(response.data) // П Р И М Е Р
         });*/ // П Р И М Е Р
-    }
+    };
 
     componentDidMount() {
         this.toReloadComponent()
@@ -91,4 +91,4 @@ export default compose(
         sendUsersStatusThunkCreator, toChangePhoto, toCheckInitializationForProfile}),
     withRouter,
     AuthRedirectComponent
-)(ProfileContainer);
+)(ProfileContainer)

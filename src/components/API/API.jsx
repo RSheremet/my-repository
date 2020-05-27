@@ -78,7 +78,6 @@ export const profileAPI = {
                 }                                       // следующего кода formData = new FormData(название, файл) - внутри скобочек указываем 1. Название файла который мы отправляем 2. Вкладываем сам файл
             })
                 .then(response => {
-                    debugger
                     return response.data
                 })
         )

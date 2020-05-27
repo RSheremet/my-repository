@@ -97,7 +97,6 @@ export const toLogout = () => async (dispatch) => {
 };
 
 export const toCheckInitializationForProfile = ( userId ) => async (dispatch) => {
-
     let promise = dispatch(getUserProfileThunkCreatorr(userId));
     await Promise.all([promise]);
     dispatch(initializedSuccess());

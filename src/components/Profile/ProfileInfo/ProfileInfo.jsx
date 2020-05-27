@@ -1,24 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import style from './ProfileInfo.module.css';
-import Preloader from "../../Common/Preloader/Preloader";
 import lfj from "../../../images/looking_for_job.jpeg";
 import hw from "../../../images/im_working.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import Photo from "../../../images/no-photo.jpg"
+import UserPhoto from "../../Common/UserPhoto/UserPhoto";
 
 
 
 const ProfileInfo = ( props ) => {
 
-
-    let [photo, setUseEffectChangePhoto] = useState(props.profile.photos.large);
-
-    useEffect( () => {
-        setUseEffectChangePhoto(props.profile.photos.large);
-    }, [props.profile.photos.large]);
-
     let p = props.profile;
-    let photos = <img src={photo} />
 
     let changePhoto = (e) => {
     if (e.target.files[0])
@@ -39,7 +31,7 @@ const ProfileInfo = ( props ) => {
         </div>*/}
             <div className={style.wrapper}>
                 <div className={style.place_for_photo} >
-                    { photos }
+                    { UserPhoto(props.profile.photos.large) }
                     { profilePhotoChanger }
                 </div>
                 <div className={style.your_profiles_wrapper}>

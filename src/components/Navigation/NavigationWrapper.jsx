@@ -1,35 +1,17 @@
 import React from 'react';
-import classes from '../../App.module.css';
-import {NavLink} from "react-router-dom";
+import style from '../../App.module.css';
 import {compose} from "redux";
+import Navigation from "./Navigation";
+import UserPhoto from "../Common/UserPhoto/UserPhoto";
 
 
 const NavigationWrapper = ( props ) => {
 
         return (
 
-            <nav className={classes.nav}>
-                <div className={menu}>
-                    <NavLink to={"/profile/7398"}>Profile</NavLink>
-                </div>
-                <div className={menu}>
-                    <NavLink to={"/correspondense"}>Messages</NavLink>
-                </div>
-                <div className={menu}>
-                    <NavLink to="/users">Users</NavLink>
-                </div>
-                <div className={menu}>
-                    <NavLink to="/news">News</NavLink>
-                </div>
-                <div className={menu}>
-                    <NavLink to="/music">Music</NavLink>
-                </div>
-                <div className={menu}>
-                    <NavLink to="/settings">Settings</NavLink>
-                </div>
-                <div className={menu}>
-                    <NavLink to="/friendsList">FriendsList</NavLink>
-                </div>
+            <nav className={style.nav_wrapper}>
+                { props.isInitialized && UserPhoto(props.profile.photos.large) }
+                <Navigation />
             </nav>
 
         )

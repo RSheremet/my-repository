@@ -7,7 +7,7 @@ export const LazyLoadHocComponent = (Component) => {
 
         return <Suspense fallback={<h1>Loading profile...</h1>}>
                 <Component />
-            </Suspense>
+               </Suspense>
 
 
     };
