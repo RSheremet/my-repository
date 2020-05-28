@@ -11,6 +11,7 @@ import {AuthRedirectComponent} from "../hoc/AuthRedirectComponent";
 import {compose} from "redux";
 import {setAuthUserDataThunkCreator, toCheckInitializationForProfile} from "../../Redux/auth-reducer";
 import Preloader from "../Common/Preloader/Preloader";
+import style from "../../App.module.css";
 
 
 
@@ -54,7 +55,7 @@ class ProfileContainer extends React.Component {
         }
 
         return (
-            <div>
+            <div className={style.profile_wrapper}>
                 <ProfileInfo { ...this.props }
                              profile={this.props.profile}
                              theProfile={this.props.theProfile}
@@ -64,6 +65,8 @@ class ProfileContainer extends React.Component {
                              userId={this.props.userId}
                              toChangePhoto={this.props.toChangePhoto}
                              isInitialized={this.props.isInitialized}
+
+                             className={style.smt}
                 />
                 <MyPostsContainer store={ this.props.store } />
             </div>

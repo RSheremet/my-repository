@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import style from "../../../App.module.css"
 
 const UserPhoto = ( profileProps ) => {
 
@@ -9,7 +10,7 @@ const UserPhoto = ( profileProps ) => {
     }, [profileProps]);
 
     return (
-        <div>
+        <div className={style.thePhoto}>
             <img src={photo} />
         </div>
     )

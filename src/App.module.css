@@ -96,6 +96,10 @@ body .container .nav_wrapper {
   align-items: flex-start; }
   body .container .nav_wrapper span {
     margin-top: 10px; }
+  body .container .nav_wrapper .check_mark {
+    width: 30px;
+    height: 30px;
+    background: url(images/check_mark.png) no-repeat center; }
   body .container .nav_wrapper div img {
     width: 150px;
     border-radius: 5px; }
@@ -112,3 +116,80 @@ body .container .nav_wrapper {
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-top: 30px; }
+
+body .profile_wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 20px; }
+  body .profile_wrapper .profile_info {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    body .profile_wrapper .profile_info .wrapper {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start; }
+      body .profile_wrapper .profile_info .wrapper .place_for_photo {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start; }
+        body .profile_wrapper .profile_info .wrapper .place_for_photo .thePhoto {
+          width: 100%;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          margin-top: 5px; }
+          body .profile_wrapper .profile_info .wrapper .place_for_photo .thePhoto img {
+            width: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            -o-object-position: 0 -118px;
+            object-position: 0 -118px;
+            border-radius: 5px; }
+          body .profile_wrapper .profile_info .wrapper .place_for_photo .thePhoto input {
+            display: none; }

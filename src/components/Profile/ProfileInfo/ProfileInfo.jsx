@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
+import styles from '../../../App.module.css';
 import lfj from "../../../images/looking_for_job.jpeg";
 import hw from "../../../images/im_working.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-import Photo from "../../../images/no-photo.jpg"
 import UserPhoto from "../../Common/UserPhoto/UserPhoto";
 
 
@@ -25,14 +25,13 @@ const ProfileInfo = ( props ) => {
     }
 
     return (
-        <div>
-            {/*<div>
-            <img src='https://static8.depositphotos.com/1370441/848/i/450/depositphotos_8486144-stock-photo-beach-and-tropical-sea.jpg' />
-        </div>*/}
-            <div className={style.wrapper}>
-                <div className={style.place_for_photo} >
+
+        <div className={styles.profile_info}>
+
+            <div className={styles.wrapper}>
+                <div className={styles.place_for_photo} >
                     { UserPhoto(props.profile.photos.large) }
-                    { profilePhotoChanger }
+                    {/*{ profilePhotoChanger }*/}
                 </div>
                 <div className={style.your_profiles_wrapper}>
                     <ProfileStatusWithHooks

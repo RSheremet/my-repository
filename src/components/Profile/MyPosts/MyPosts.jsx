@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../../App.module.css';
+import style from '../../../App.module.css';
 import Post from "./SinglePost/Post";
 import TextareaPost from "./PostForm/PostForm";
 
@@ -22,7 +22,7 @@ const MyPosts = ( props ) => {
     }
 
     return (
-        <div className={classes.posts}>
+        <div className={style.myPosts_wrapper}>
             my posts
             <div>
                 new post
