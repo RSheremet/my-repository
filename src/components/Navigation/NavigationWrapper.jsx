@@ -7,10 +7,13 @@ import UserPhoto from "../Common/UserPhoto/UserPhoto";
 
 const NavigationWrapper = ( props ) => {
 
+        let login = <span>{props.login}</span>
+
         return (
 
             <nav className={style.nav_wrapper}>
                 { props.isInitialized && UserPhoto(props.profile.photos.large) }
+                { props.isInitialized && login }
                 <Navigation />
             </nav>
 

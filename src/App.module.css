@@ -79,7 +79,7 @@ a {
           .header .container .isLogin_wrapper .login_block button:hover {
             background: #719cce; }
 
-.container:nth-child(2) nav {
+body .container .nav_wrapper {
   margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -88,10 +88,27 @@ a {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: flex-start;
-  height: 255px; }
+  align-items: flex-start; }
+  body .container .nav_wrapper span {
+    margin-top: 10px; }
+  body .container .nav_wrapper div img {
+    width: 150px;
+    border-radius: 5px; }
+  body .container .nav_wrapper nav {
+    height: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-top: 30px; }
