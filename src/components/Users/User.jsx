@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../../App.module.css";
 import {NavLink} from "react-router-dom";
-import Photo from "../../images/logo.jpg";
+import Photo from "../../images/no-photo.jpg";
 
 const User = (props) => {
 

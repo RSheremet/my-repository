@@ -5,6 +5,7 @@ import lfj from "../../../images/looking_for_job.jpeg";
 import hw from "../../../images/im_working.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import UserPhoto from "../../Common/UserPhoto/UserPhoto";
+import MyWorksContainer from "./MyWorks/MyWorksContainer";
 
 
 
@@ -33,6 +34,11 @@ const ProfileInfo = ( props ) => {
                     { UserPhoto(props.profile.photos.large) }
                     {/*{ profilePhotoChanger }*/}
                 </div>
+                <div className={styles.string}></div>
+                <div className={styles.myWorksTitle}>
+                    Мои работы
+                </div>
+                <MyWorksContainer />
                 <div className={style.your_profiles_wrapper}>
                     <ProfileStatusWithHooks
                         sendUsersStatusThunkCreator={props.sendUsersStatusThunkCreator}

@@ -13,8 +13,10 @@ const NavigationWrapper = ( props ) => {
 
             <nav className={style.nav_wrapper}>
                 { props.isInitialized && UserPhoto(props.profile.photos.large) }
-                { props.isInitialized && login }
-                <div className={style.check_mark}></div>
+                <div className={style.nickname}>
+                        { props.isInitialized && login }
+                        <div className={style.check_mark}></div>
+                </div>
                 <Navigation />
             </nav>
 

@@ -17,6 +17,7 @@ import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {LazyLoadHocComponent} from "./components/hoc/LazyLoadHoc";
 import NavigationContainer from "./components/Navigation/NavigationContainer";
+import {toCheckInitializationForProfile} from "./Redux/auth-reducer";
 
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer')); // Lazy-loaded
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer')); // Lazy-loadedss
@@ -30,7 +31,11 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 class App extends React.Component {
 
     componentDidMount() {
-        this.props.setInitializedThunkCreator()
+
+        let userId = 7398;
+        this.props.toCheckInitializationForProfile( userId );
+        this.props.setInitializedThunkCreator();
+
     }
 
     render() {
@@ -110,7 +115,7 @@ let mapStateToProps = ( state ) => {
 
 export const AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, {setInitializedThunkCreator})
+    connect(mapStateToProps, {setInitializedThunkCreator, toCheckInitializationForProfile})
 )(App);
 
 let SocialNetworkApp = (props) => {
