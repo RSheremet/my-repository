@@ -35,9 +35,6 @@ const ProfileInfo = ( props ) => {
                     {/*{ profilePhotoChanger }*/}
                 </div>
                 <div className={styles.string}></div>
-                <div className={styles.myWorksTitle}>
-                    Мои работы
-                </div>
                 <MyWorksContainer />
                 <div className={style.your_profiles_wrapper}>
                     <ProfileStatusWithHooks

@@ -7,6 +7,7 @@ import FancySliderPicture from "../../../Common/FancySliderPicture/FancySliderPi
 import Slider from "react-slick";
 import {compose} from "redux";
 import {connect} from "react-redux";
+import "../../../utilits/Loader"
 import Photo1 from "../../../../images/my_works/1.png";
 import Photo2 from "../../../../images/my_works/2.png";
 import Photo3 from "../../../../images/my_works/3.png";
@@ -23,9 +24,8 @@ class MyWorksContainer extends React.Component {
             {photo: Photo4, id: 4}
         ],
         fancyPhoto: '',
-        fancyBoxStyle: `${style.fancyBoxActive}`
+        fancyBoxStyle: `fancyBox`
     };
-
 
     /* САМОДЕЛЬНЫй ФЕНСИ БОКС НАЧИНАЕТСЯ ЗДЕСЬ */
     fancyImage = '';
@@ -34,7 +34,7 @@ class MyWorksContainer extends React.Component {
         let fancyImage = this.state.photos.filter( p => id === p.id );
         this.setState({
             fancyPhoto: fancyImage[0].photo,
-            fancyBoxStyle: `${style.fancyBoxActive}`
+            /*fancyBoxStyle: `${style.fancyBoxActive}`*/
         });
         console.log(fancyImage[0].photo)
     };
@@ -42,7 +42,7 @@ class MyWorksContainer extends React.Component {
     fancyBoxOff = () => {
         this.setState({
             fancyPhoto: '',
-            fancyBoxStyle: `${style.fancyBoxPassive}`
+            /*fancyBoxStyle: `fancyBox fancyBoxPassive`*/
         });
     };
     /* САМОДЕЛЬНЫй ФЕНСИ БОКС ЗАКАНЧИВАЕТСЯ ЗДЕСЬ */
@@ -70,6 +70,9 @@ class MyWorksContainer extends React.Component {
 
         return (
             <div className={style.sliderWrapper}>
+                <div className={style.myWorksTitle}>
+                    Мои работы
+                </div>
                 <Slider {...settings}>
                     { this.allThePhotos }
                 </Slider>
