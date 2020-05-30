@@ -12,6 +12,8 @@ import Photo1 from "../../../../images/my_works/1.png";
 import Photo2 from "../../../../images/my_works/2.png";
 import Photo3 from "../../../../images/my_works/3.png";
 import Photo4 from "../../../../images/my_works/4.png";
+import ProfileStatusWithHooks from "../ProfileStatusWithHooks";
+import {sendUsersStatusThunkCreator} from "../../../../Redux/profile-reducer";
 
 
 class MyWorksContainer extends React.Component {
@@ -24,7 +26,7 @@ class MyWorksContainer extends React.Component {
             {photo: Photo4, id: 4}
         ],
         fancyPhoto: '',
-        fancyBoxStyle: `fancyBox`
+        fancyBoxStyle: `${style.fancyBoxPassive}`
     };
 
     /* САМОДЕЛЬНЫй ФЕНСИ БОКС НАЧИНАЕТСЯ ЗДЕСЬ */
@@ -34,7 +36,7 @@ class MyWorksContainer extends React.Component {
         let fancyImage = this.state.photos.filter( p => id === p.id );
         this.setState({
             fancyPhoto: fancyImage[0].photo,
-            /*fancyBoxStyle: `${style.fancyBoxActive}`*/
+            fancyBoxStyle: `${style.fancyBoxActive}`
         });
         console.log(fancyImage[0].photo)
     };
@@ -42,7 +44,7 @@ class MyWorksContainer extends React.Component {
     fancyBoxOff = () => {
         this.setState({
             fancyPhoto: '',
-            /*fancyBoxStyle: `fancyBox fancyBoxPassive`*/
+            fancyBoxStyle: `${style.fancyBoxPassive}`
         });
     };
     /* САМОДЕЛЬНЫй ФЕНСИ БОКС ЗАКАНЧИВАЕТСЯ ЗДЕСЬ */
@@ -71,8 +73,12 @@ class MyWorksContainer extends React.Component {
         return (
             <div className={style.sliderWrapper}>
                 <div className={style.myWorksTitle}>
-                    Мои работы
+                    <ProfileStatusWithHooks
+                        sendUsersStatusThunkCreator={this.props.sendUsersStatusThunkCreator}
+                        status={this.props.status}
+                    />
                 </div>
+                <div className={style.string}></div>
                 <Slider {...settings}>
                     { this.allThePhotos }
                 </Slider>
@@ -93,11 +99,11 @@ class MyWorksContainer extends React.Component {
 let mapStateToProps = ( state ) => {
 
     return {
-
+        status: state.profileRD.status
     }
 
 };
 
 export default compose(
-    connect(mapStateToProps, {}),
+    connect(mapStateToProps, {sendUsersStatusThunkCreator}),
 )(MyWorksContainer)

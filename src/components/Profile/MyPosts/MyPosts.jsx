@@ -14,29 +14,27 @@ const MyPosts = ( props ) => {
 
     let addPost = () => {
         props.addPost()
-    }
+    };
 
     let beenChanged = (e) => {
         let changedState = e.target.value;
         props.beenChanged( changedState )
-    }
+    };
 
     return (
         <div className={style.myPosts_wrapper}>
-            my posts
-            <div>
-                new post
-            </div>
+            <span className={style.messageTitle}>Введите свое сообщение</span>
+            <div className={style.string}></div>
+            <TextareaPost addPostActionCreatorr={props.addPostActionCreatorr} />
             {postsElements}
             <div>
                 {/*<textarea
                     value={ props.valueDefault }
                     onChange={beenChanged}>
                 </textarea>*/}
-                <TextareaPost addPostActionCreatorr={props.addPostActionCreatorr} />
             </div>
         </div>
     )
-}
+};
 
 export default MyPosts;

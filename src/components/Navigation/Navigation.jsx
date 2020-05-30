@@ -14,9 +14,9 @@ const Navigation = ( props ) => {
                 <div className={menu}>
                     <NavLink to={"/profile/7398"}>Profile</NavLink>
                 </div>
-                <div className={menu}>
+                {/*<div className={menu}>
                     <NavLink to={"/correspondense"}>Messages</NavLink>
-                </div>
+                </div>*/}
                 <div className={menu}>
                     <NavLink to="/users">Users</NavLink>
                 </div>

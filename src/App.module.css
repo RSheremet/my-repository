@@ -10,7 +10,7 @@ a {
   color: inherit; }
 
 .container {
-  max-width: 1280px;
+  max-width: 1000px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -144,7 +144,7 @@ body {
       border-radius: 5px; }
     body .container .nav_wrapper nav {
       width: 100%;
-      height: 270px;
+      height: 200px;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -193,7 +193,7 @@ body {
             -o-transition: .3s;
             transition: .3s; }
   body .profile_wrapper {
-    width: 87%;
+    width: 83%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -204,6 +204,57 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; }
+    body .profile_wrapper .myPosts_wrapper {
+      width: 100%;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 5px; }
+      body .profile_wrapper .myPosts_wrapper .messageTitle {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        font-size: 25px;
+        text-align: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-top: 30px;
+        font-weight: bold; }
+      body .profile_wrapper .myPosts_wrapper .string {
+        background: #0000001a;
+        height: 1px;
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 20px; }
+      body .profile_wrapper .myPosts_wrapper .formWrapper {
+        width: 100%;
+        margin-top: 30px;
+        padding: 0 40px; }
+        body .profile_wrapper .myPosts_wrapper .formWrapper form button {
+          border: 1px solid #5281b7;
+          background: #5281b7;
+          width: 44%;
+          height: 27px;
+          border-radius: 5px;
+          margin: 0 auto;
+          margin-top: 5px;
+          color: #fff;
+          font-size: 14px; }
+        body .profile_wrapper .myPosts_wrapper .formWrapper form .formControlWrapper {
+          width: 100%; }
+          body .profile_wrapper .myPosts_wrapper .formWrapper form .formControlWrapper .formControl textarea {
+            width: 100%;
+            resize: vertical;
+            padding: 15px 0px 0px 15px;
+            border: 1px solid #3b5999;
+            border-radius: 5px;
+            margin: 0px;
+            height: 52px; }
+            body .profile_wrapper .myPosts_wrapper .formWrapper form .formControlWrapper .formControl textarea.error {
+              border-color: red; }
+          body .profile_wrapper .myPosts_wrapper .formWrapper form .formControlWrapper .formError {
+            color: red; }
     body .profile_wrapper .profile_info {
       width: 100%;
       display: -webkit-box;
@@ -268,38 +319,95 @@ body {
             body .profile_wrapper .profile_info .wrapper .place_for_photo .thePhoto input {
               display: none; }
         body .profile_wrapper .profile_info .wrapper .string {
-          background: #fff;
+          background: #0000001a;
           height: 1px;
+          width: 95%;
+          margin: 0 auto;
+          margin-top: 20px; }
+        body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper {
+          padding: 30px 0;
           width: 100%;
-          margin-top: 5px; }
-        body .profile_wrapper .profile_info .wrapper .myWorksTitle {
+          background: #fff;
           margin-top: 10px;
-          font-size: 25px; }
-        body .profile_wrapper .profile_info .wrapper .sliderWrapper {
-          margin-top: 10px;
-          width: 100%;
-          height: 330px; }
-          body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancyBoxPassive {
-            width: 0;
-            opacity: 0;
-            -webkit-transition: opacity .2s linear, width .2s linear, .2s;
-            -o-transition: opacity .2s linear, width .2s linear, .2s;
-            transition: opacity .2s linear, width .2s linear, .2s; }
-            body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancyBoxPassive .fancyBoxFlexWrapper {
-              width: 100%;
-              height: 100%;
+          border-radius: 5px; }
+          body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper .full_name {
+            text-align: center;
+            font-size: 24px; }
+          body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper .contacts_inner {
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold; }
+          body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper .contacts {
+            margin-top: 20px;
+            width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center; }
+            body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper .contacts .social_networks_wrapper {
+              width: 40%;
               display: -webkit-box;
               display: -ms-flexbox;
               display: flex;
-              -webkit-box-pack: center;
-              -ms-flex-pack: center;
-              justify-content: center;
-              -webkit-box-align: center;
-              -ms-flex-align: center;
-              align-items: center; }
-              body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancyBoxPassive .fancyBoxFlexWrapper img {
-                width: 0px;
-                height: 0px; }
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -ms-flex-direction: column;
+              flex-direction: column; }
+              body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper .contacts .social_networks_wrapper .network {
+                height: 35px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: start;
+                -ms-flex-pack: start;
+                justify-content: flex-start;
+                -webkit-box-align: stretch;
+                -ms-flex-align: stretch;
+                align-items: stretch; }
+                body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper .contacts .social_networks_wrapper .network span {
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  width: 110px; }
+          body .profile_wrapper .profile_info .wrapper .your_profiles_wrapper .searching_for_work {
+            margin-top: 20px;
+            text-align: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center; }
+        body .profile_wrapper .profile_info .wrapper .sliderWrapper {
+          margin-top: 10px;
+          width: 100%;
+          height: 330px;
+          background: #fff;
+          border-radius: 5px; }
+          body .profile_wrapper .profile_info .wrapper .sliderWrapper .myWorksTitle {
+            margin-top: 25px;
+            font-size: 30px;
+            padding-left: 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            font-weight: bold; }
+          body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancyBoxPassive {
+            width: 100%;
+            height: 100%;
+            display: none; }
           body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancyBoxActive {
             width: 100%;
             height: 100%;
@@ -322,41 +430,70 @@ body {
               align-items: center; }
               body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancyBoxActive .fancyBoxFlexWrapper img {
                 width: 50%; }
-          body .profile_wrapper .profile_info .wrapper .sliderWrapper .slick-slider .slick-arrow.slick-prev, body .profile_wrapper .profile_info .wrapper .sliderWrapper .slick-slider .slick-arrow.slick-next {
-            top: 60% !important; }
-          body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancySliderPicture {
-            width: 100%;
-            margin-top: 50px;
-            display: -webkit-box !important;
-            display: -ms-flexbox !important;
-            display: flex !important;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center; }
-            body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancySliderPicture .thePicture {
-              width: 95%;
+        body .profile_wrapper .profile_info .wrapper .slick-slider .slick-arrow.slick-prev, body .profile_wrapper .profile_info .wrapper .slick-slider .slick-arrow.slick-next {
+          top: 60% !important; }
+        body .profile_wrapper .profile_info .wrapper .fancySliderPicture {
+          width: 100%;
+          margin-top: 50px;
+          display: -webkit-box !important;
+          display: -ms-flexbox !important;
+          display: flex !important;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center; }
+          body .profile_wrapper .profile_info .wrapper .fancySliderPicture .thePicture {
+            width: 95%;
+            -webkit-transition: .3s;
+            -o-transition: .3s;
+            transition: .3s;
+            position: relative; }
+            body .profile_wrapper .profile_info .wrapper .fancySliderPicture .thePicture img {
+              width: 100%;
+              -o-object-fit: cover;
+              object-fit: cover;
               -webkit-transition: .3s;
               -o-transition: .3s;
               transition: .3s; }
-              body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancySliderPicture .thePicture img {
-                width: 100%;
-                -o-object-fit: cover;
-                object-fit: cover;
+              body .profile_wrapper .profile_info .wrapper .fancySliderPicture .thePicture img:hover {
                 -webkit-transition: .3s;
                 -o-transition: .3s;
-                transition: .3s; }
-                body .profile_wrapper .profile_info .wrapper .sliderWrapper .fancySliderPicture .thePicture img:hover {
-                  -webkit-transition: .3s;
-                  -o-transition: .3s;
-                  transition: .3s;
-                  width: 140%;
-                  position: relative;
-                  z-index: 2;
-                  margin-top: -40px;
-                  margin-left: -65px;
-                  -webkit-box-shadow: 1px 1px 15px black;
-                  box-shadow: 1px 1px 15px black;
-                  cursor: pointer; }
+                transition: .3s;
+                width: 140%;
+                position: relative;
+                z-index: 2;
+                margin-top: -40px;
+                margin-left: -65px;
+                -webkit-box-shadow: 1px 1px 15px black;
+                box-shadow: 1px 1px 15px black;
+                cursor: pointer;
+                background: url("images/my_work_hover.png") no-repeat center;
+                background-size: cover;
+                -webkit-animation: myWorkHover .5s linear;
+                animation: myWorkHover .5s linear; }
+  body .myPosts_wrapper .singlePost {
+    margin-top: 10px;
+    padding-left: 40px; }
+    body .myPosts_wrapper .singlePost .likes .likesWrapper .img {
+      width: 20px;
+      height: 20px;
+      background: url("images/like.png") no-repeat center;
+      background-size: cover; }
+
+@-webkit-keyframes myWorkHover {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; } }
+
+@keyframes myWorkHover {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; } }

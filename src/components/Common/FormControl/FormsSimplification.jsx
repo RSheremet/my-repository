@@ -7,26 +7,26 @@ export const ControlForm = ({input, meta, child, ...props}) => {
     let hasError = meta.touched && meta.error;
 
     return (
-        <div className={style.formControl + ' ' + ( hasError ? style.error : " " )}>
-            <div>
+        <div className={style.formControlWrapper + ' ' + ( hasError ? style.error : " " )}>
+            <div className={style.formControl}>
                 { props.children }
             </div>
-            <span>
+            {/*<span className={style.formError}>
                 {hasError && <span>{meta.error}</span>}
-            </span>
+            </span>*/}
         </div>
     )
-}
+};
 
 export const FormsSimplification = (props) => {
     const {input, meta, child, ...restProps} = props;
-    return <ControlForm {...props} ><textarea {...input} {...restProps} /></ControlForm>
-}
+    return <ControlForm {...props} ><textarea className={ meta.touched && meta.error ? style.error : '' } {...input} {...restProps} /></ControlForm>
+};
 
 export const Input = (props) => {
     const {input, meta, child, ...restProps} = props;
     return <ControlForm {...props} ><input {...input} {...restProps} /></ControlForm>
-}
+};
 
 
 
@@ -43,5 +43,5 @@ export const FieldSimple = (placeholder, name, component = "", WhetherFieldRequi
             /> {text}
         </div>
 
-)
+);
 

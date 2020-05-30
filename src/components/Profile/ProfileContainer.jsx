@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import Profile from "./ProfileInfo/Profile";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {connect} from "react-redux";
 import {
@@ -56,17 +56,15 @@ class ProfileContainer extends React.Component {
 
         return (
             <div className={style.profile_wrapper}>
-                <ProfileInfo { ...this.props }
-                             profile={this.props.profile}
-                             theProfile={this.props.theProfile}
-                             status={this.props.status}
-                             sendUsersStatusThunkCreator={this.props.sendUsersStatusThunkCreator}
-                             someId={this.someId}
-                             userId={this.props.userId}
-                             toChangePhoto={this.props.toChangePhoto}
-                             isInitialized={this.props.isInitialized}
+                <Profile { ...this.props }
+                         profile={this.props.profile}
+                         theProfile={this.props.theProfile}
+                         someId={this.someId}
+                         userId={this.props.userId}
+                         toChangePhoto={this.props.toChangePhoto}
+                         isInitialized={this.props.isInitialized}
 
-                             className={style.smt}
+                         className={style.smt}
                 />
                 <MyPostsContainer store={ this.props.store } />
             </div>
@@ -81,7 +79,7 @@ const mapStateToProps = ( state ) => {
         profile: state.profileRD.profile.singleProfile,
         theProfile: state.profileRD.profile,
         isAuth: state.authRD.isAuth,
-        status: state.profileRD.status,
+
         userId: state.authRD.userId,
         isInitialized: state.authRD.isInitialized,
     }
@@ -91,7 +89,7 @@ const mapStateToProps = ( state ) => {
 
 export default compose(
     connect(mapStateToProps, {getUserProfileThunkCreatorr, getUsersStatusThunkCreator, setAuthUserDataThunkCreator,
-        sendUsersStatusThunkCreator, toChangePhoto, toCheckInitializationForProfile}),
+        toChangePhoto, toCheckInitializationForProfile}),
     withRouter,
     AuthRedirectComponent
 )(ProfileContainer)

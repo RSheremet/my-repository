@@ -1,6 +1,5 @@
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
-import {addDynamicChangeCreator, addPostActionCreator, addPostActionCreatorr} from "../../../../Redux/profile-reducer";
 import {fieldRequired, maxLengthCreator} from "../../../validation/Validation";
 import {FormsSimplification} from "../../../Common/FormControl/FormsSimplification";
 import style from '../../../../App.module.css';
@@ -30,7 +29,7 @@ const TextareaPost = (props) => {
 
 
     return (
-        <div>
+        <div className={style.formWrapper}>
             <PostReduxForm onSubmit={onSubmit} />
         </div>
     )
