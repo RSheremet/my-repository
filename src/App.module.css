@@ -109,6 +109,96 @@ a {
 
 body {
   background: #EAEBEF; }
+  body .container .formSettingsWrapper {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px 40px 40px;
+    background: #fff;
+    border-radius: 5px; }
+    body .container .formSettingsWrapper .accountOptions {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      font-size: 30px;
+      font-weight: bold; }
+    body .container .formSettingsWrapper .settingsWrapper {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      body .container .formSettingsWrapper .settingsWrapper .yourName {
+        width: 100%; }
+        body .container .formSettingsWrapper .settingsWrapper .yourName form {
+          width: 100%;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
+          justify-content: flex-start;
+          -webkit-box-align: start;
+          -ms-flex-align: start;
+          align-items: flex-start;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          margin-top: 20px; }
+          body .container .formSettingsWrapper .settingsWrapper .yourName form .settingsSingleForm {
+            width: 100%;
+            margin-top: 20px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column; }
+            body .container .formSettingsWrapper .settingsWrapper .yourName form .settingsSingleForm div {
+              width: 100%; }
+            body .container .formSettingsWrapper .settingsWrapper .yourName form .settingsSingleForm .formControlWrapper .formControl {
+              width: 400px;
+              height: 50px;
+              background: #fff;
+              border-radius: 5px;
+              border: 1px solid #c5c5c58c;
+              margin-top: 10px; }
+              body .container .formSettingsWrapper .settingsWrapper .yourName form .settingsSingleForm .formControlWrapper .formControl input {
+                width: 100%;
+                height: 100%;
+                padding: 20px;
+                border: none;
+                background: none;
+                outline: none; }
+          body .container .formSettingsWrapper .settingsWrapper .yourName form .submitWrapper {
+            width: 400px;
+            height: 50px;
+            margin-top: 20px; }
+            body .container .formSettingsWrapper .settingsWrapper .yourName form .submitWrapper button {
+              width: 100%;
+              height: 30px;
+              border: none;
+              cursor: pointer;
+              background: #5281b7;
+              border-radius: 3px;
+              color: #fff;
+              -webkit-transition: .3s;
+              -o-transition: .3s;
+              transition: .3s;
+              outline: none; }
   body .container .nav_wrapper {
     margin-top: 30px;
     display: -webkit-box;
@@ -251,11 +341,9 @@ body {
             outline: none;
             padding-left: 15px; }
       body .container .formLoginWrapper form div:nth-child(3) {
-        display: none; }
-      body .container .formLoginWrapper form div:nth-child(4) {
         width: 250px;
         margin-top: 10px; }
-        body .container .formLoginWrapper form div:nth-child(4) button {
+        body .container .formLoginWrapper form div:nth-child(3) button {
           width: 100%;
           height: 30px;
           border: none;

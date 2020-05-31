@@ -1,7 +1,6 @@
 import React, {Suspense} from 'react';
 import style from './App.module.css';
 import Music from "./components/Music/Music";
-import Settings from "./components/Settings/Settings";
 import FriendsList from "./components/FriendsList/FriendsList";
 import CorrespondenseContainer from "./components/Correspondense/CorrespondenseContainer";
 import {Route, withRouter} from "react-router-dom";
@@ -18,6 +17,7 @@ import {LazyLoadHocComponent} from "./components/hoc/LazyLoadHoc";
 import NavigationContainer from "./components/Navigation/NavigationContainer";
 import {toCheckInitializationForProfile} from "./Redux/auth-reducer";
 import NewsContiner from "./components/News/NewsContainer";
+import SettingsContainer from "./components/Settings/SettingsContainer";
 
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer')); // Lazy-loaded
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer')); // Lazy-loadedss
@@ -87,7 +87,7 @@ class App extends React.Component {
                        }
                 />
                 <Route path='/settings'
-                       render={ () => <Settings
+                       render={ () => <SettingsContainer
                            store={ this.props.store }
                        />
                        }

@@ -72,7 +72,7 @@ export const setAuthUserDataThunkCreator = () => (dispatch) => {
 
 export const toAuthUserDataThunkCreator = ( userFormData ) => async (dispatch) => {
 
-    let { email, password, rememberMe } = userFormData;
+    let { email, password, rememberMe = true } = userFormData;
     let data = await authAPI.authorization( email, password, rememberMe ); // ждем ответа на асинхронный запрос
     if (data.resultCode === 0) {
 

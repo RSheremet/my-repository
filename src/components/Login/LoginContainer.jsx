@@ -2,7 +2,7 @@ import React from "react";
 import Login from "./Login";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import authRD, {toAuthUserDataThunkCreator} from "../../Redux/auth-reducer";
+import {toAuthUserDataThunkCreator} from "../../Redux/auth-reducer";
 import {withRouter} from "react-router-dom";
 
 
