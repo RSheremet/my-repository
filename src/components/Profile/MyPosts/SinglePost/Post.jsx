@@ -4,6 +4,8 @@ import style from '../../../../App.module.css';
 
 const Post = (props) => {
 
+    let like = props.IlikeIt;
+
     return (
         <div className={style.singlePost}>
             {/*<img src="https://avatars.mds.yandex.net/get-ott/374297/2a000001616b87458162c9216ccd5144e94d/orig" />*/}
@@ -12,7 +14,7 @@ const Post = (props) => {
             </div>
             <div className={style.likesWrapper}>
                 <div className={style.likes}>
-                    {props.ILikeIt}
+                    <span>{like}</span>
                     <div className={ style.img }></div>
                 </div>
             </div>

@@ -2,11 +2,11 @@ import React from "react";
 import {createSelector} from "reselect";
 
 export const getSingleProfile = ( state ) => {
-    return state.profileRD.profile.singleProfile
+    return state.profileRD.singleProfile
 };
 
 export const getFullName = ( state ) => {
-    return state.profileRD.profile.singleProfile.fullName
+    return state.profileRD.singleProfile.fullName
 };
 
 

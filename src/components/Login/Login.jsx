@@ -1,9 +1,8 @@
 import React from "react";
 import {reduxForm} from "redux-form";
-
 import {fieldRequired, maxLengthCreator} from "../validation/Validation";
 import {Redirect} from "react-router-dom";
-import style from '../Common/FormControl/Textarea.module.css'
+import style from '../../App.module.css'
 import {FieldSimple, Input} from "../Common/FormControl/FormsSimplification";
 
 const maxLength20 = maxLengthCreator(30);
@@ -46,7 +45,7 @@ const Login = (props) => {
 
 
     return (
-        <div>
+        <div className={style.formWrapper}>
             <h1>Зарегистрируйтесь пожалуйста</h1>
             <LoginReduxForm onSubmit={onSubmit} />
         </div>

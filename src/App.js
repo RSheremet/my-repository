@@ -1,6 +1,5 @@
 import React, {Suspense} from 'react';
 import style from './App.module.css';
-import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import FriendsList from "./components/FriendsList/FriendsList";
@@ -10,7 +9,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import appRD, {setInitializedThunkCreator} from "./Redux/app-reducer";
+import {setInitializedThunkCreator} from "./Redux/app-reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from './Redux/redux-store';
 import {HashRouter} from "react-router-dom";
@@ -18,6 +17,7 @@ import {Provider} from "react-redux";
 import {LazyLoadHocComponent} from "./components/hoc/LazyLoadHoc";
 import NavigationContainer from "./components/Navigation/NavigationContainer";
 import {toCheckInitializationForProfile} from "./Redux/auth-reducer";
+import NewsContiner from "./components/News/NewsContainer";
 
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer')); // Lazy-loaded
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer')); // Lazy-loadedss
@@ -75,7 +75,7 @@ class App extends React.Component {
                        }
                 />
                 <Route path='/news'
-                       render={ () => <News
+                       render={ () => <NewsContiner
                            store={ this.props.store }
                        />
                        }

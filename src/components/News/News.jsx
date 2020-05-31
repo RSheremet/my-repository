@@ -1,15 +1,15 @@
 import React from 'react';
-import classes from '../../App.module.css';
+import style from "../../App.module.css"
 import {Redirect} from "react-router-dom";
-import authRD from "../../Redux/auth-reducer";
+
 
 const News = (props) => {
 
-    if (props.store.getState().authRD.isAuth == false) return <Redirect to={'/login'} />;
-
     return (
-        <div>
-            Здесь будут новости
+        <div className={style.newsWrapper}>
+            <div>Новости</div>
+            <div className={style.string}></div>
+
         </div>
     )
 }

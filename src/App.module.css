@@ -15,7 +15,8 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom: 20px; }
 
 .header {
   background: #3b5999;
@@ -72,7 +73,6 @@ a {
         .header .container .isLogin_wrapper .login_block .login_word {
           position: absolute;
           right: 0px;
-          top: -15px;
           display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
@@ -125,6 +125,8 @@ body {
     -ms-flex-align: start;
     align-items: flex-start;
     margin-right: 20px; }
+    body .container .nav_wrapper .nav .menuActive {
+      background: #fff; }
     body .container .nav_wrapper .nickname {
       padding-left: 10px;
       display: -webkit-box;
@@ -192,6 +194,69 @@ body {
             -webkit-transition: .3s;
             -o-transition: .3s;
             transition: .3s; }
+  body .usersContainer {
+    width: 100%;
+    background: #fff;
+    margin-top: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    body .usersContainer .string {
+      background: #0000001a;
+      height: 1px;
+      width: 95%;
+      margin: 0 auto;
+      margin-top: 20px; }
+    body .usersContainer .wrapper {
+      width: 250px;
+      margin-top: 40px; }
+      body .usersContainer .wrapper .breakdown {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column; }
+        body .usersContainer .wrapper .breakdown img {
+          width: 200px; }
+        body .usersContainer .wrapper .breakdown button {
+          margin-top: 10px; }
+    body .usersContainer .paginatorContainer {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin-top: 15px;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+      body .usersContainer .paginatorContainer button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none; }
+      body .usersContainer .paginatorContainer .selectedPage {
+        margin: 0 10px;
+        color: #5281b7; }
+      body .usersContainer .paginatorContainer .unselected_page {
+        margin: 0 10px;
+        cursor: pointer; }
   body .profile_wrapper {
     width: 83%;
     display: -webkit-box;
@@ -208,7 +273,8 @@ body {
       width: 100%;
       margin-top: 10px;
       background: #fff;
-      border-radius: 5px; }
+      border-radius: 5px;
+      padding-bottom: 20px; }
       body .profile_wrapper .myPosts_wrapper .messageTitle {
         width: 100%;
         display: -webkit-box;
@@ -232,7 +298,7 @@ body {
         margin-top: 30px;
         padding: 0 40px; }
         body .profile_wrapper .myPosts_wrapper .formWrapper form button {
-          border: 1px solid #5281b7;
+          border: none;
           background: #5281b7;
           width: 44%;
           height: 27px;
@@ -240,7 +306,16 @@ body {
           margin: 0 auto;
           margin-top: 5px;
           color: #fff;
-          font-size: 14px; }
+          font-size: 14px;
+          -webkit-transition: .3s;
+          -o-transition: .3s;
+          transition: .3s; }
+          body .profile_wrapper .myPosts_wrapper .formWrapper form button:hover {
+            cursor: pointer;
+            background: #6ca4e4;
+            -webkit-transition: .3s;
+            -o-transition: .3s;
+            transition: .3s; }
         body .profile_wrapper .myPosts_wrapper .formWrapper form .formControlWrapper {
           width: 100%; }
           body .profile_wrapper .myPosts_wrapper .formWrapper form .formControlWrapper .formControl textarea {
@@ -475,12 +550,27 @@ body {
                 animation: myWorkHover .5s linear; }
   body .myPosts_wrapper .singlePost {
     margin-top: 10px;
-    padding-left: 40px; }
-    body .myPosts_wrapper .singlePost .likes .likesWrapper .img {
-      width: 20px;
-      height: 20px;
-      background: url("images/like.png") no-repeat center;
-      background-size: cover; }
+    padding-left: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 95%; }
+    body .myPosts_wrapper .singlePost .likesWrapper .likes {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      width: 50px; }
+      body .myPosts_wrapper .singlePost .likesWrapper .likes .img {
+        width: 20px;
+        height: 20px;
+        background: url("images/like.png") no-repeat center;
+        background-size: cover; }
 
 @-webkit-keyframes myWorkHover {
   0% {

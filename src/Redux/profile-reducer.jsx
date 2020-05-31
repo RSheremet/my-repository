@@ -13,9 +13,10 @@ let initialProfile = {
         posts: [
             {id: 1, posti: 'Its my own cosial network', ILikeIt: 15},
             {id: 2, posti: 'Sounds fantastic!', ILikeIt: 20}
-        ],
-        singleProfile: null
+        ]
     },
+
+    singleProfile: null,
 
     status: ''
 
@@ -30,7 +31,7 @@ const  profileRD = (state = initialProfile, action) => {
             stateCopy = {
                 ...state,
                 profile: {
-                    posts: [...state.profile.posts, {id: 3, posti: action.text.postForm, ILikeIt: 2}]
+                    posts: [...state.profile.posts, {id: 3, posti: action.text.postForm, ILikeIt: 2}],
                 }
             };
             return stateCopy;
@@ -38,10 +39,7 @@ const  profileRD = (state = initialProfile, action) => {
         case SET_USER_PROFILE:
             stateCopy = {
                 ...state,
-                profile: {
-                    posts: [...state.profile.posts],
-                    singleProfile: action.file
-                }
+                singleProfile: action.file
             };
             return stateCopy;
 
@@ -64,14 +62,11 @@ const  profileRD = (state = initialProfile, action) => {
         case SET_USER_PHOTO:
             stateCopy = {
                 ...state,
-                profile: {
-                    posts: [...state.profile.posts],
-                    singleProfile: {
-                        ...state.profile.singleProfile,
-                        photos: {
-                            ...state.profile.singleProfile.small,
-                            large: action.photo
-                        }
+                singleProfile: {
+                    ...state.profile.singleProfile,
+                    photos: {
+                        ...state.profile.singleProfile.small,
+                        large: action.photo
                     }
                 }
             };

@@ -63,8 +63,6 @@ class ProfileContainer extends React.Component {
                          userId={this.props.userId}
                          toChangePhoto={this.props.toChangePhoto}
                          isInitialized={this.props.isInitialized}
-
-                         className={style.smt}
                 />
                 <MyPostsContainer store={ this.props.store } />
             </div>
@@ -76,10 +74,9 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = ( state ) => {
     return {
-        profile: state.profileRD.profile.singleProfile,
+        profile: state.profileRD.singleProfile,
         theProfile: state.profileRD.profile,
         isAuth: state.authRD.isAuth,
-
         userId: state.authRD.userId,
         isInitialized: state.authRD.isInitialized,
     }

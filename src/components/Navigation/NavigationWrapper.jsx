@@ -17,7 +17,11 @@ const NavigationWrapper = ( props ) => {
                         { props.isInitialized && login }
                         <div className={style.check_mark}></div>
                 </div>
-                <Navigation />
+                <Navigation
+                    points={ props.points }
+                    chosenPoint={ props.chosenPoint }
+                    changeChosenPoint={ props.changeChosenPoint }
+                />
             </nav>
 
         )
