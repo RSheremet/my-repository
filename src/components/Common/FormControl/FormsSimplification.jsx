@@ -45,3 +45,15 @@ export const FieldSimple = (placeholder, name, component = "", WhetherFieldRequi
 
 );
 
+//// ANOTHER FIELD FORM SIMPLIFICATION ///////
+
+export const FieldSimpleSettings = (placeholder, name, component = "") => (
+
+    <div className={style.simpleField}>
+        <Field placeholder={placeholder}
+               name={name}
+               component={component}
+        />
+    </div>
+
+);

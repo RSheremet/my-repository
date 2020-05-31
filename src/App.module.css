@@ -169,6 +169,8 @@ body {
             flex-direction: column; }
             body .container .formSettingsWrapper .settingsWrapper .yourName form .settingsSingleForm div {
               width: 100%; }
+            body .container .formSettingsWrapper .settingsWrapper .yourName form .settingsSingleForm .formControlWrapper.error .formControl {
+              border: 1px solid red !important; }
             body .container .formSettingsWrapper .settingsWrapper .yourName form .settingsSingleForm .formControlWrapper .formControl {
               width: 400px;
               height: 50px;

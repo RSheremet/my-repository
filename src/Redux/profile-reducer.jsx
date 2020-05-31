@@ -1,11 +1,13 @@
 import React from "react";
 import {profileAPI, usersAPI} from "../components/API/API";
+import {setButtonPressed, toFollowUnfollow} from "./users-reducer";
 const ADD_POST = 'ADD-POST';
 
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
 const DELETE_POST = 'DELETE_POST';
 const SET_USER_PHOTO = 'SET-USER-PHOTO';
+const SET_USER_PROFILE_INFO = 'components/settings/SET-USER-PROFILE-INFO';
 
 let initialProfile = {
 
@@ -63,12 +65,22 @@ const  profileRD = (state = initialProfile, action) => {
             stateCopy = {
                 ...state,
                 singleProfile: {
-                    ...state.profile.singleProfile,
+                    ...state.singleProfile,
                     photos: {
-                        ...state.profile.singleProfile.small,
+                        ...state.singleProfile.small,
                         large: action.photo
                     }
                 }
+            };
+            return stateCopy;
+
+        case SET_USER_PROFILE_INFO:
+            stateCopy = {
+                ...state,
+                singleProfile: {
+                   ...state.singleProfile, ...action.info
+                },
+
             };
             return stateCopy;
 
@@ -83,6 +95,7 @@ export const setUserProfile = (file) => ({ type: SET_USER_PROFILE, file });
 export const setUsersStatus = (status) => ({ type: SET_USER_STATUS, status });
 export const deletePostActionCreatorr = ( postId ) => ({ type: DELETE_POST, postId });
 export const setAuthUserPhoto = ( photo ) => ({ type: SET_USER_PHOTO, photo });
+export const setUserProfileInfo = ( info ) => ({ type: SET_USER_PROFILE_INFO, info });
 
 export const toChangePhoto = ( photo ) => {
 
@@ -117,6 +130,35 @@ export const sendUsersStatusThunkCreator = ( status ) => {
     return () => {
         profileAPI.sendStatus( status )
     }
+};
+
+export const sendUserProfileInfoTC = ( formdata, userId ) => async (dispatch) => {
+
+    debugger
+
+        let info = {
+            AboutMe: "AboutMe",
+            userId: userId,
+            lookingForAJob: true,
+            lookingForAJobDescription: formdata.lookingForAJobDescription,
+            fullName: formdata.fullName,
+            contacts: {
+                github: formdata.github ? formdata.github : "",
+                vk: formdata.vk ? formdata.vk : "",
+                facebook: formdata.facebook ? formdata.facebook : "",
+                instagram: formdata.instagram ? formdata.instagram : "",
+                twitter: formdata.twitter ? formdata.twitter : "",
+                website: formdata.website ? formdata.website : "",
+                youtube: formdata.youtube ? formdata.youtube : "",
+                mainLink: formdata.mainLink ? formdata.mainLink : ""
+            }
+        };
+
+        let data = await profileAPI.sendProfileInfo( info );
+        if (data.resultCode == 0) {
+            debugger
+            dispatch(setUserProfileInfo(data));
+        }
 };
 
 export default profileRD;

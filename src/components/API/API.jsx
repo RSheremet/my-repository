@@ -81,6 +81,16 @@ export const profileAPI = {
                     return response.data
                 })
         )
+    },
+    sendProfileInfo( info ) {
+        debugger
+        return (
+            instance.put('/profile', info)
+                .then(response => {
+                    debugger
+                    return response.data
+                })
+        )
     }
 };
 
