@@ -13,7 +13,7 @@ const LoginForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             {FieldSimple('email', 'email', Input, fieldRequired, maxLength20)}
             {FieldSimple('name', 'password', Input, fieldRequired, maxLength20)}
-            {FieldSimple("", "rememberMe", "input", fieldRequired, maxLength20, {type: "checkbox"}, "remember me")}
+            {FieldSimple("", "rememberMe", "input", fieldRequired, maxLength20, {type: "checkbox"}, "checked", "remember me")}
             {/*<div>
                 <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember me //////////// П Р И М Е Р
             </div>*/}
@@ -22,8 +22,8 @@ const LoginForm = (props) => {
                 {props.error}
             </div>
              }
-            <div>
-                <button>Log in</button>
+            <div className={style.logIn}>
+                <button>Авторизоваться</button>
             </div>
         </form>
     )
@@ -45,7 +45,7 @@ const Login = (props) => {
 
 
     return (
-        <div className={style.formWrapper}>
+        <div className={style.formLoginWrapper}>
             <h1>Зарегистрируйтесь пожалуйста</h1>
             <LoginReduxForm onSubmit={onSubmit} />
         </div>

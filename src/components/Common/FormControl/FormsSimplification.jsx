@@ -32,13 +32,14 @@ export const Input = (props) => {
 
 //// FIELD FORM SIMPLIFICATION ///////
 
-export const FieldSimple = (placeholder, name, component = "", WhetherFieldRequired = "", maxLength = "", props = {}, text = "") => (
+export const FieldSimple = (placeholder, name, component = "", WhetherFieldRequired = "", maxLength = "", props = {}, checked="", text = "") => (
 
         <div>
             <Field placeholder={placeholder}
                    name={name}
                    component={component}
                    validate={[WhetherFieldRequired, maxLength]}
+                   checked={checked}
                    {...props}
             /> {text}
         </div>
