@@ -13,8 +13,8 @@ export const AuthRedirectComponent = (Component) => {
 
 };
 
-/*
-export const AuthRedirectDone = (Component) => {
+
+export const AuthRedirectToProfile = (Component) => {
 
     const RedirectComponent = (props) => {
         if (props.isAuth) return <Redirect to={'/profile/:userID'} />;
@@ -23,4 +23,4 @@ export const AuthRedirectDone = (Component) => {
     };
 
     return RedirectComponent
-}*/
+};

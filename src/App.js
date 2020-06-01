@@ -3,7 +3,7 @@ import style from './App.module.css';
 import Music from "./components/Music/Music";
 import FriendsList from "./components/FriendsList/FriendsList";
 import CorrespondenseContainer from "./components/Correspondense/CorrespondenseContainer";
-import {Route, withRouter} from "react-router-dom";
+import {Redirect, Route, withRouter} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {connect} from "react-redux";
@@ -36,12 +36,16 @@ class App extends React.Component {
         this.props.toCheckInitializationForProfile( userId );
         this.props.setInitializedThunkCreator();
 
+
     }
+
 
     render() {
 
         if (!this.props.isInitialized) {
             return <Preloader />
+        } else if ( this.props.location.pathname === '/' ) {
+            return <Redirect to={`/profile/7398`} />
         }
 
         return (
